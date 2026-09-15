@@ -1,0 +1,50 @@
+{
+  "LoginPage:email-field": {
+    "page": "LoginPage",
+    "element": "email field",
+    "selector": "page.getByLabel(/email/i)",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T00:00:00.000Z",
+    "timesHealed": 0
+  },
+  "LoginPage:password-field": {
+    "page": "LoginPage",
+    "element": "password field",
+    "selector": "page.getByLabel(/password/i)",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T00:00:00.000Z",
+    "timesHealed": 0
+  },
+  "LoginPage:submit-button": {
+    "page": "LoginPage",
+    "element": "submit button",
+    "selector": "page.getByRole('button', { name: /log in/i })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T00:00:00.000Z",
+    "timesHealed": 0
+  },
+  "UserLoginPage:email-field": {
+    "page": "UserLoginPage",
+    "element": "email field",
+    "selector": "page.getByLabel(/email/i)",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T02:01:48.152Z",
+    "timesHealed": 0
+  },
+  "UserLoginPage:password-field": {
+    "page": "UserLoginPage",
+    "element": "password field",
+    "selector": "page.getByLabel(/password/i)",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T02:01:48.153Z",
+    "timesHealed": 0
+  },
+  "UserLoginPage:submit-button": {
+    "page": "UserLoginPage",
+    "element": "submit button",
+    "selector": "page.getByRole('button', { name: /log in/i })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T02:01:48.154Z",
+    "timesHealed": 0
+  }
+}

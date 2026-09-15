@@ -1,0 +1,124 @@
+{
+  "id": "user-login-1789437708140",
+  "feature": "User Login",
+  "source": "sample-login.md",
+  "createdAt": "2026-09-15T02:01:48.140Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "user-login-1",
+      "title": "a registered user — they submit valid credentials → they land on the dashboard",
+      "priority": "high",
+      "tags": [
+        "auth",
+        "smoke",
+        "happy-path"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "email field",
+          "data": "a registered user"
+        },
+        {
+          "action": "fill",
+          "target": "password field",
+          "data": "they submit valid credentials"
+        },
+        {
+          "action": "click",
+          "target": "submit button"
+        },
+        {
+          "action": "assert",
+          "expected": "they land on the dashboard"
+        }
+      ]
+    },
+    {
+      "id": "user-login-2",
+      "title": "a registered user — they submit an incorrect password → an inline error \"Invalid email or password\" is shown",
+      "priority": "medium",
+      "tags": [
+        "auth",
+        "smoke",
+        "negative"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "email field",
+          "data": "a registered user"
+        },
+        {
+          "action": "fill",
+          "target": "password field",
+          "data": "they submit an incorrect password"
+        },
+        {
+          "action": "click",
+          "target": "submit button"
+        },
+        {
+          "action": "assert",
+          "expected": "an inline error \"Invalid email or password\" is shown"
+        }
+      ]
+    },
+    {
+      "id": "user-login-3",
+      "title": "an empty email field — the user submits the form → a validation message is shown and no request is sent",
+      "priority": "high",
+      "tags": [
+        "auth",
+        "smoke",
+        "happy-path"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "password field",
+          "data": "the user submits the form"
+        },
+        {
+          "action": "click",
+          "target": "submit button"
+        },
+        {
+          "action": "assert",
+          "expected": "a validation message is shown and no request is sent"
+        }
+      ]
+    },
+    {
+      "id": "user-login-4",
+      "title": "a locked account — the user submits valid credentials → an account-locked message is shown",
+      "priority": "medium",
+      "tags": [
+        "auth",
+        "smoke",
+        "negative"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "email field",
+          "data": "a locked account"
+        },
+        {
+          "action": "fill",
+          "target": "password field",
+          "data": "the user submits valid credentials"
+        },
+        {
+          "action": "click",
+          "target": "submit button"
+        },
+        {
+          "action": "assert",
+          "expected": "an account-locked message is shown"
+        }
+      ]
+    }
+  ]
+}

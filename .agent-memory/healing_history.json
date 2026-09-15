@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "id": "heal-1789437716380-665",
+      "timestamp": "2026-09-15T02:01:56.380Z",
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a registered user — they submit valid credentials → they land on the dashboard",
+      "failureType": "timeout",
+      "oldSelector": "getByLabel(/email/i)",
+      "newSelector": "getByLabel(/email/i).first()",
+      "reasoning": "Timeout waiting for locator; scoping to .first() and relying on auto-wait to reduce ambiguity-induced stalls.",
+      "applied": false,
+      "confidence": 0.4
+    },
+    {
+      "id": "heal-1789437716382-626",
+      "timestamp": "2026-09-15T02:01:56.382Z",
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a registered user — they submit an incorrect password → an inline error \"Invalid email or password\" is shown",
+      "failureType": "timeout",
+      "oldSelector": "getByLabel(/email/i)",
+      "newSelector": "getByLabel(/email/i).first()",
+      "reasoning": "Timeout waiting for locator; scoping to .first() and relying on auto-wait to reduce ambiguity-induced stalls.",
+      "applied": false,
+      "confidence": 0.4
+    },
+    {
+      "id": "heal-1789437716384-748",
+      "timestamp": "2026-09-15T02:01:56.384Z",
+      "testFile": "user-login.spec.ts",
+      "testTitle": "an empty email field — the user submits the form → a validation message is shown and no request is sent",
+      "failureType": "timeout",
+      "oldSelector": "getByLabel(/password/i)",
+      "newSelector": "getByLabel(/password/i).first()",
+      "reasoning": "Timeout waiting for locator; scoping to .first() and relying on auto-wait to reduce ambiguity-induced stalls.",
+      "applied": false,
+      "confidence": 0.4
+    },
+    {
+      "id": "heal-1789437716385-656",
+      "timestamp": "2026-09-15T02:01:56.385Z",
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a locked account — the user submits valid credentials → an account-locked message is shown",
+      "failureType": "timeout",
+      "oldSelector": "getByLabel(/email/i)",
+      "newSelector": "getByLabel(/email/i).first()",
+      "reasoning": "Timeout waiting for locator; scoping to .first() and relying on auto-wait to reduce ambiguity-induced stalls.",
+      "applied": false,
+      "confidence": 0.4
+    }
+  ]
+}

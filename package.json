@@ -1,0 +1,34 @@
+{
+  "name": "adnomix",
+  "version": "1.0.0",
+  "description": "Agentic Playwright test automation framework with Planner, Generator, and Healer AI agents.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "agent:plan": "tsx agents/planner/plannerAgent.ts",
+    "agent:generate": "tsx agents/generator/generatorAgent.ts",
+    "agent:heal": "tsx agents/healer/healerAgent.ts",
+    "agent:run-cycle": "tsx agents/orchestrator.ts",
+    "mcp:server": "tsx mcp/server/testOpsServer.ts",
+    "mcp:demo": "tsx mcp/client/demoUsage.ts"
+  },
+  "keywords": [
+    "playwright",
+    "ai-agents",
+    "test-automation",
+    "mcp"
+  ],
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.5"
+  }
+}

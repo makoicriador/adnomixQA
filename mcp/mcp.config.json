@@ -1,0 +1,12 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/mcp-config.json",
+  "mcpServers": {
+    "adnomix-test-ops": {
+      "command": "npx",
+      "args": ["tsx", "mcp/server/testOpsServer.ts"],
+      "cwd": ".",
+      "env": {},
+      "description": "Sandboxed filesystem + Playwright CLI + report-reading tools for the Planner, Generator, and Healer agents. All file paths are resolved and clamped to the project root."
+    }
+  }
+}

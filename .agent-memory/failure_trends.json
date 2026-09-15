@@ -1,0 +1,44 @@
+{
+  "trends": [
+    {
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a registered user — they submit valid credentials → they land on the dashboard",
+      "failureCount": 1,
+      "lastFailure": "2026-09-15T02:01:56.380Z",
+      "failureTypes": {
+        "timeout": 1
+      },
+      "flakinessScore": 1.5
+    },
+    {
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a registered user — they submit an incorrect password → an inline error \"Invalid email or password\" is shown",
+      "failureCount": 1,
+      "lastFailure": "2026-09-15T02:01:56.382Z",
+      "failureTypes": {
+        "timeout": 1
+      },
+      "flakinessScore": 1.5
+    },
+    {
+      "testFile": "user-login.spec.ts",
+      "testTitle": "an empty email field — the user submits the form → a validation message is shown and no request is sent",
+      "failureCount": 1,
+      "lastFailure": "2026-09-15T02:01:56.383Z",
+      "failureTypes": {
+        "timeout": 1
+      },
+      "flakinessScore": 1.5
+    },
+    {
+      "testFile": "user-login.spec.ts",
+      "testTitle": "a locked account — the user submits valid credentials → an account-locked message is shown",
+      "failureCount": 1,
+      "lastFailure": "2026-09-15T02:01:56.385Z",
+      "failureTypes": {
+        "timeout": 1
+      },
+      "flakinessScore": 1.5
+    }
+  ]
+}
