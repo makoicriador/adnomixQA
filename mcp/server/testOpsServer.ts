@@ -85,13 +85,14 @@ server.registerTool(
   'run_tests',
   {
     title: 'Run Playwright Tests',
-    description: 'Executes `npx playwright test`, optionally filtered by a title/tag grep pattern.',
+    description: 'Executes `npx playwright test`, optionally filtered by a title/tag grep pattern, project, and/or specific spec file(s).',
     inputSchema: {
       grep: z.string().optional().describe('Optional pattern passed to --grep'),
       project: z.string().optional().describe('Optional Playwright project name'),
+      files: z.array(z.string()).optional().describe('Optional spec file paths (relative to the project root) to run instead of the whole suite'),
     },
   },
-  async ({ grep, project }) => {
+  async ({ grep, project, files }) => {
     const args = ['playwright', 'test'];
     if (grep) {
       if (!ALLOWED_TEST_ARGS.test(grep)) throw new Error('grep pattern contains disallowed characters');
@@ -101,9 +102,19 @@ server.registerTool(
       if (!ALLOWED_TEST_ARGS.test(project)) throw new Error('project name contains disallowed characters');
       args.push('--project', project);
     }
+    if (files) {
+      for (const file of files) {
+        resolveInRepo(file); // throws if the path escapes the project root
+        args.push(file);
+      }
+    }
 
     const output = await new Promise<string>((resolve) => {
-      execFile('npx', args, { cwd: REPO_ROOT, shell: false, timeout: 10 * 60 * 1000 }, (error, stdout, stderr) => {
+      // shell: true is required for npx to resolve on Windows (npx.cmd);
+      // args are still passed as an array, which Node escapes per-platform.
+      // Safe here because every element is either a fixed literal or has
+      // already been validated (ALLOWED_TEST_ARGS / resolveInRepo above).
+      execFile('npx', args, { cwd: REPO_ROOT, shell: true, timeout: 10 * 60 * 1000 }, (error, stdout, stderr) => {
         resolve(`${stdout}\n${stderr}\n${error ? `Exit: ${error.code}` : 'Exit: 0'}`);
       });
     });

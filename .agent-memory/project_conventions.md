@@ -14,3 +14,9 @@ new code.
 - Timeouts should rely on Playwright's built-in auto-waiting; avoid manual `page.waitForTimeout`.
 
 ## Healer log (auto-appended below)
+
+- [2026-09-15T13:35:01.716Z] adxmanager.dev Suppliers index: the search box matches location as separate city/country tokens, not the literal "City, Country" display string — searching "Xiamen, China" (comma included) returns 0 results, but "Xiamen" or "China" alone match. Search on one token at a time.
+
+- [2026-09-15T13:35:01.716Z] adxmanager.dev Suppliers index Status filter: there are two distinct "Apply" buttons with the same accessible name "Apply" — an inner one inside the filter popover (#filterControlGroup) that only stages the selection into a chip, and an outer one (button[type=submit][form=form-suppliers-index]) that actually submits the GET form. Both must be clicked, in that order, or the filter silently has no effect.
+
+- [2026-09-15T13:35:01.716Z] adxmanager.dev left sidebar: top-level accordion headers like "Service Providers" are not <a>/<button> elements (no accessible role), and exact text matching resolves to the wrong node. Use a case-insensitive substring text locator (getByText(/.../i).first()) for sidebar navigation on this app.

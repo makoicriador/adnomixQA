@@ -1,0 +1,41 @@
+Category,Element,Property,Standard (Majority),Consistent,Inconsistent Pages & Values,Expected Behavior
+Navigation,Breadcrumb,Present,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,Home (Dashboard): Shows no breadcrumb trail; Orders: Shows no breadcrumb trail,"Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
+Typography,Page title (h1),Font size,24px,No,Products: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
+Tables,Table header row,Background color (the <tr> behind the header cells),transparent,No,"Home (Dashboard): #F9FAFB;
+Inventory Warehouses: #F9FAFB",Table header row background must be identical across pages. On most pages it looks like this: transparent.
+Tables,Table header cell,Font size,14px,No,"Home (Dashboard): 12px;
+Inventory Warehouses: 12px",Table header font size must be identical across pages. On most pages it looks like this: 14px.
+Tables,Table header cell,Font weight,400,No,"Home (Dashboard): 500;
+Inventory - All: 500;
+Inventory Warehouses: 700",Table header font weight must be identical across pages. On most pages it looks like this: 400.
+Tables,Table header cell,Text align,left,No,"Home (Dashboard): center;
+Inventory Warehouses: center",Table header text alignment must be identical across pages. On most pages it looks like this: left.
+Tables,Table data cell,Vertical padding (row density),12px,No,"Home (Dashboard): 8px;
+Inventory - All: 8px",Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
+Tables,Table data cell,Horizontal padding (left gutter),20px,No,"Home (Dashboard): 8px;
+Inventory - All: 12px",Cell left padding must be identical across pages. On most pages it looks like this: 20px.
+Badges,Status badge/pill,Present,Shows no status badges,No,"Orders: Shows status labels as colored badges;
+Shipments: Shows status labels as colored badges;
+Categories: Shows status labels as colored badges;
+Service Providers - Warehouses: Shows status labels as colored badges",Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.
+Navigation,Breadcrumb,Present,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,"Home (Dashboard): Shows no breadcrumb trail;
+Orders: Shows no breadcrumb trail","Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
+Typography,Page title (h1),Font size,24px,No,Products: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
+Typography,Section heading (card title),Present,Has no section heading — just the page title,No,Home (Dashboard): Has a labeled section heading above part of the page,Card/section headings should be used consistently where a page has sub-sections. On most pages it looks like this: Has no section heading — just the page title.
+Tables,Table header row,Background color (the <tr> behind the header cells),transparent,No,"Home (Dashboard): #F9FAFB;
+Inventory Warehouses: #F9FAFB",Table header row background must be identical across pages. On most pages it looks like this: transparent.
+Tables,Table header cell,Font size,14px,No,"Home (Dashboard): 12px;
+Inventory Warehouses: 12px",Table header font size must be identical across pages. On most pages it looks like this: 14px.
+Tables,Table header cell,Font weight,400,No,"Home (Dashboard): 500;
+Inventory - All: 500;
+Inventory Warehouses: 700",Table header font weight must be identical across pages. On most pages it looks like this: 400.
+Tables,Table header cell,Text align,left,No,"Home (Dashboard): center;
+Inventory Warehouses: center",Table header text alignment must be identical across pages. On most pages it looks like this: left.
+Tables,Table data cell,Vertical padding (row density),12px,No,"Home (Dashboard): 8px;
+Inventory - All: 8px",Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
+Tables,Table data cell,Horizontal padding (left gutter),20px,No,"Home (Dashboard): 8px;
+Inventory - All: 12px",Cell left padding must be identical across pages. On most pages it looks like this: 20px.
+Badges,Status badge/pill,Present,Shows no status badges,No,"Orders: Shows status labels as colored badges;
+Shipments: Shows status labels as colored badges;
+Categories: Shows status labels as colored badges;
+Service Providers - Warehouses: Shows status labels as colored badges",Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.

@@ -101,13 +101,32 @@ each sandboxed to the project root:
 | `read_file`   | Read a text file relative to the repo root                     |
 | `write_file`  | Write/overwrite a text file, creating parent dirs as needed     |
 | `list_dir`    | List a directory's contents                                    |
-| `run_tests`   | Run `npx playwright test` (optionally `--grep`/`--project`)     |
+| `run_tests`   | Run `npx playwright test` (optionally `--grep`/`--project`/specific `files`) |
 | `read_report` | Read the last `results.json` / `results.xml`                   |
 
 `mcp/mcp.config.json` registers it the way Claude Code / Claude Desktop
 register any local MCP server (`command` + `args`). `mcp/client/demoUsage.ts`
 is boilerplate showing an agent-side client spawning the server over stdio
 and calling each tool — run it with `npm run mcp:demo`.
+
+## Test suites
+
+- `tests/user-login.spec.ts` — generated demo suite for the fictional login
+  feature in `requirements/sample-login.md`; deliberately fails against the
+  default `example.com` baseURL so there's something for the Healer to
+  diagnose out of the box.
+- `tests/test_ServiceProviders_SuppliersIndex.spec.ts` — a real, hand-verified
+  end-to-end suite against `https://adxmanager.dev`: log in, navigate to
+  Service Providers > Suppliers, then exercise the search bar (by supplier
+  name/contact/location/email), the Status filter (Active, Inactive,
+  Active + Inactive, plus combining a filter with a search), and CSV export.
+  Every selector in `pages/LoginPage.ts`, `pages/HomePage.ts`, and
+  `pages/SuppliersPage.ts` was confirmed against the live app (not guessed) —
+  non-obvious findings from that process (e.g. location search not matching
+  the literal "City, Country" string, and the filter panel's two identically
+  labelled "Apply" buttons) are recorded in `.agent-memory/project_conventions.md`.
+  Requires `ADX_USERNAME`/`ADX_PASSWORD` in a local `.env` (see
+  `.env.example`); the suite is skipped automatically if they're unset.
 
 ## Persistent agent memory (`.agent-memory/`)
 

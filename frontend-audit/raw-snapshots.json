@@ -1,0 +1,2511 @@
+[
+  {
+    "slug": "home",
+    "name": "Home (Dashboard)",
+    "url": "https://adxmanager.dev/v2/home",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": false,
+        "fontSize": "",
+        "color": "",
+        "fontWeight": ""
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Dashboard",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": true,
+        "fontSize": "16px",
+        "fontWeight": "600"
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "oklch(0.985 0.002 247.839)",
+        "headerBorderWidth": "1px",
+        "headerFontSize": "12px",
+        "headerFontWeight": "500",
+        "headerTextAlign": "center",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "8px",
+        "cellPaddingLeft": "8px",
+        "rowCount": 27
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": false,
+        "fontSize": "",
+        "color": "",
+        "fontWeight": ""
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Dashboard",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": true,
+        "fontSize": "16px",
+        "fontWeight": "600"
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "oklch(0.985 0.002 247.839)",
+        "headerBorderWidth": "1px",
+        "headerFontSize": "12px",
+        "headerFontWeight": "500",
+        "headerTextAlign": "center",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "8px",
+        "cellPaddingLeft": "8px",
+        "rowCount": 27
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "inventory-all",
+    "name": "Inventory - All",
+    "url": "https://adxmanager.dev/v2/inventory/all",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "All Inventory",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "500",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "8px",
+        "cellPaddingLeft": "12px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "All Inventory",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "500",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "8px",
+        "cellPaddingLeft": "12px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "orders",
+    "name": "Orders",
+    "url": "https://adxmanager.dev/v2/orders",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": false,
+        "fontSize": "",
+        "color": "",
+        "fontWeight": ""
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Orders",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.932 0.032 255.585)",
+        "statusLabels": "Production/Ready to Ship"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": false,
+        "fontSize": "",
+        "color": "",
+        "fontWeight": ""
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Orders",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.932 0.032 255.585)",
+        "statusLabels": "Production/Ready to Ship"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "shipments",
+    "name": "Shipments",
+    "url": "https://adxmanager.dev/v2/shipments",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Shipments",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.973 0.071 103.193)",
+        "statusLabels": "SHIPPING"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Shipments",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.973 0.071 103.193)",
+        "statusLabels": "SHIPPING"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "ready-to-ship",
+    "name": "Ready To Ship",
+    "url": "https://adxmanager.dev/v2/ready-to-ship",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Ready To Ship",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.21 0.006 285.885)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Ready To Ship",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.985 0 0)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "inventory-warehouses",
+    "name": "Inventory Warehouses",
+    "url": "https://adxmanager.dev/v2/inventory-warehouses",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Warehouses Inventory",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "oklch(0.985 0.002 247.839)",
+        "headerBorderWidth": "1px",
+        "headerFontSize": "12px",
+        "headerFontWeight": "700",
+        "headerTextAlign": "center",
+        "headerColor": "oklch(0.21 0.006 285.885)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Warehouses Inventory",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "oklch(0.985 0.002 247.839)",
+        "headerBorderWidth": "1px",
+        "headerFontSize": "12px",
+        "headerFontWeight": "700",
+        "headerTextAlign": "center",
+        "headerColor": "oklch(0.985 0 0)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "products",
+    "name": "Products",
+    "url": "https://adxmanager.dev/v2/products",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "All Products",
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "All Products",
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 25
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "brands",
+    "name": "Brands",
+    "url": "https://adxmanager.dev/v2/brands",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Brands",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 8
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Brands",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 8
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "categories",
+    "name": "Categories",
+    "url": "https://adxmanager.dev/v2/categories",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Categories",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 5
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.962 0.044 156.743)",
+        "statusLabels": "Active"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Categories",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 5
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklab(0.266 -0.0578814 0.0295761 / 0.5)",
+        "statusLabels": "Active"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "suppliers",
+    "name": "Service Providers - Suppliers",
+    "url": "https://adxmanager.dev/v2/service-providers/suppliers",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Suppliers",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 24
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Suppliers",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 24
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "freight-forwarders",
+    "name": "Service Providers - Freight Forwarders",
+    "url": "https://adxmanager.dev/v2/service-providers/freight-forwarders",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Freight Forwarders",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 14
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Freight Forwarders",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 14
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "customs-brokers",
+    "name": "Service Providers - Customs Brokers",
+    "url": "https://adxmanager.dev/v2/service-providers/customs-brokers",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Customs Brokers",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 5
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Customs Brokers",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 5
+      },
+      "badge": {
+        "present": false,
+        "borderRadius": "",
+        "fontSize": "",
+        "bgColor": "",
+        "statusLabels": ""
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  },
+  {
+    "slug": "sp-warehouses",
+    "name": "Service Providers - Warehouses",
+    "url": "https://adxmanager.dev/v2/service-providers/warehouses",
+    "light": {
+      "header": {
+        "bgColor": "rgb(255, 255, 255)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "rgb(255, 255, 255)",
+        "width": "280px",
+        "borderColor": "oklch(0.94 0.004 286.32)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.21 0.006 285.885)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Warehouses",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.141 0.005 285.823)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.141 0.005 285.823)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.623 0.214 259.815)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.141 0.005 285.823)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.967 0.000281923 -0.000959437 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 21
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.982 0.018 155.826)",
+        "statusLabels": "Active/Inactive"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "dark": {
+      "header": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "height": "70px",
+        "boxShadow": "none",
+        "position": "fixed"
+      },
+      "sidebar": {
+        "bgColor": "oklch(0.141 0.005 285.823)",
+        "width": "280px",
+        "borderColor": "oklch(0.274 0.006 286.033)"
+      },
+      "sidebarItem": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "oklch(0.985 0 0)"
+      },
+      "footer": {
+        "present": true,
+        "bgColor": "rgba(0, 0, 0, 0)",
+        "color": "oklch(0.985 0 0)",
+        "fontSize": "16px"
+      },
+      "breadcrumb": {
+        "present": true,
+        "fontSize": "14px",
+        "color": "oklch(0.985 0 0)",
+        "fontWeight": "500"
+      },
+      "pageTitle": {
+        "present": true,
+        "text": "Warehouses",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "oklch(0.985 0 0)",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "sectionHeading": {
+        "present": false,
+        "fontSize": "",
+        "fontWeight": ""
+      },
+      "bodyText": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "color": "oklch(0.985 0 0)"
+      },
+      "primaryButton": {
+        "present": true,
+        "bgColor": "oklch(0.546 0.245 262.881)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "6px",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "paddingTop": "0px",
+        "paddingLeft": "12px"
+      },
+      "searchInput": {
+        "present": true,
+        "borderColor": "oklch(0.985 0 0)",
+        "borderRadius": "0px",
+        "fontSize": "13px"
+      },
+      "table": {
+        "present": true,
+        "headerCellBgColor": "oklab(0.21 0.00164225 -0.00577088 / 0.4)",
+        "headerRowBgColor": "rgba(0, 0, 0, 0)",
+        "headerBorderWidth": "0px 1px 0px 0px",
+        "headerFontSize": "14px",
+        "headerFontWeight": "400",
+        "headerTextAlign": "left",
+        "headerColor": "oklch(0.552 0.016 285.938)",
+        "cellPaddingTop": "12px",
+        "cellPaddingLeft": "20px",
+        "rowCount": 21
+      },
+      "badge": {
+        "present": true,
+        "borderRadius": "6px",
+        "fontSize": "12px",
+        "bgColor": "oklch(0.982 0.018 155.826)",
+        "statusLabels": "Active/Inactive"
+      },
+      "emptyState": {
+        "present": false
+      },
+      "mainContent": {
+        "maxWidth": "none",
+        "paddingLeft": "40px"
+      }
+    },
+    "responsive": {
+      "sidebarVisible": false,
+      "hamburgerVisible": true
+    }
+  }
+]

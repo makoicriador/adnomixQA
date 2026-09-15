@@ -46,5 +46,101 @@
     "strategy": "role",
     "lastVerified": "2026-09-15T02:01:48.154Z",
     "timesHealed": 0
+  },
+  "LoginPage:email-input": {
+    "page": "LoginPage",
+    "element": "email input",
+    "selector": "page.getByPlaceholder('Email')",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "LoginPage:password-input": {
+    "page": "LoginPage",
+    "element": "password input",
+    "selector": "page.getByPlaceholder('Password')",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "LoginPage:login-button": {
+    "page": "LoginPage",
+    "element": "login button",
+    "selector": "page.getByRole('button', { name: 'Login' })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "HomePage:service-providers-nav": {
+    "page": "HomePage",
+    "element": "Service Providers sidebar accordion",
+    "selector": "page.getByText(/Service Providers/i).first()",
+    "strategy": "text",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "HomePage:suppliers-nav-link": {
+    "page": "HomePage",
+    "element": "Suppliers sidebar link",
+    "selector": "page.getByText(/Suppliers/i).first()",
+    "strategy": "text",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:search-input": {
+    "page": "SuppliersPage",
+    "element": "search input",
+    "selector": "page.getByPlaceholder('Search by supplier name, contact, location, or email...')",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:add-filter-button": {
+    "page": "SuppliersPage",
+    "element": "Add Filter button",
+    "selector": "page.getByRole('button', { name: 'Add Filter' })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:status-filter-menu-item": {
+    "page": "SuppliersPage",
+    "element": "Status filter menu item",
+    "selector": "page.getByRole('link', { name: 'Status', exact: true })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:status-active-toggle": {
+    "page": "SuppliersPage",
+    "element": "Active status toggle (scoped to #filterControlGroup)",
+    "selector": "page.locator('#filterControlGroup').getByText('Active', { exact: true })",
+    "strategy": "text",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:status-inactive-toggle": {
+    "page": "SuppliersPage",
+    "element": "Inactive status toggle (scoped to #filterControlGroup)",
+    "selector": "page.locator('#filterControlGroup').getByText('Inactive', { exact: true })",
+    "strategy": "text",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:apply-outer-button": {
+    "page": "SuppliersPage",
+    "element": "form submit Apply button (distinct from the filter panel's inner Apply)",
+    "selector": "page.locator('button[type=\"submit\"][form=\"form-suppliers-index\"]')",
+    "strategy": "css",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
+  },
+  "SuppliersPage:download-csv-link": {
+    "page": "SuppliersPage",
+    "element": "Download CSV link",
+    "selector": "page.getByRole('link', { name: 'Download CSV' })",
+    "strategy": "role",
+    "lastVerified": "2026-09-15T13:35:01.703Z",
+    "timesHealed": 0
   }
 }

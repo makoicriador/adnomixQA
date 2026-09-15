@@ -1,0 +1,296 @@
+{
+  "id": "service-providers-suppliers-index",
+  "feature": "Service Providers - Suppliers Index",
+  "source": "requirements/service-providers-suppliers.md",
+  "createdAt": "2026-09-15T13:35:01.701Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "suppliers-index-search-by-name",
+      "title": "search bar finds a supplier by supplier name",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "search",
+        "smoke"
+      ],
+      "steps": [
+        {
+          "action": "setup",
+          "data": "Logged in and navigated to Service Providers > Suppliers"
+        },
+        {
+          "action": "fill",
+          "target": "search input",
+          "data": "an existing supplier name read live from the table"
+        },
+        {
+          "action": "press",
+          "target": "Enter"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count >= 1 and a visible row contains the searched name"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-search-by-contact",
+      "title": "search bar finds a supplier by contact name",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "search"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "search input",
+          "data": "an existing contact name read live from the table"
+        },
+        {
+          "action": "press",
+          "target": "Enter"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count >= 1 and a visible row contains the searched contact"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-search-by-location",
+      "title": "search bar finds a supplier by location",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "search"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "search input",
+          "data": "the city segment of an existing location (not the full \"City, Country\" string)"
+        },
+        {
+          "action": "press",
+          "target": "Enter"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count >= 1 and a visible row contains the searched city"
+        }
+      ],
+      "riskNotes": [
+        "Location search only matches city/country as separate tokens; the composed \"City, Country\" display string returns 0 results — verified live, see project_conventions.md."
+      ]
+    },
+    {
+      "id": "suppliers-index-search-by-email",
+      "title": "search bar finds a supplier by email",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "search"
+      ],
+      "steps": [
+        {
+          "action": "fill",
+          "target": "search input",
+          "data": "an existing email read live from the table"
+        },
+        {
+          "action": "press",
+          "target": "Enter"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count >= 1 and a visible row contains the searched email"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-filter-active",
+      "title": "filters suppliers by status = Active",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "filter",
+        "smoke"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Filter button"
+        },
+        {
+          "action": "click",
+          "target": "Status filter menu item"
+        },
+        {
+          "action": "click",
+          "target": "Active toggle"
+        },
+        {
+          "action": "click",
+          "target": "filter panel Apply button"
+        },
+        {
+          "action": "click",
+          "target": "form Apply (submit) button"
+        },
+        {
+          "action": "assert",
+          "expected": "Applied filter chip reads \"Status: Active\" and result count > 0"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-filter-inactive",
+      "title": "filters suppliers by status = Inactive",
+      "priority": "medium",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "filter"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Filter button"
+        },
+        {
+          "action": "click",
+          "target": "Status filter menu item"
+        },
+        {
+          "action": "click",
+          "target": "Inactive toggle"
+        },
+        {
+          "action": "click",
+          "target": "filter panel Apply button"
+        },
+        {
+          "action": "click",
+          "target": "form Apply (submit) button"
+        },
+        {
+          "action": "assert",
+          "expected": "Applied filter chip reads \"Status: Inactive\""
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-filter-active-inactive",
+      "title": "filters suppliers by status = Active + Inactive",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "filter"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Filter button"
+        },
+        {
+          "action": "click",
+          "target": "Status filter menu item"
+        },
+        {
+          "action": "click",
+          "target": "Active toggle"
+        },
+        {
+          "action": "click",
+          "target": "Inactive toggle"
+        },
+        {
+          "action": "click",
+          "target": "filter panel Apply button"
+        },
+        {
+          "action": "click",
+          "target": "form Apply (submit) button"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count equals the sum of the Active-only and Inactive-only counts"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-search-plus-filter",
+      "title": "combines a search term with a status filter",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "search",
+        "filter"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Filter button"
+        },
+        {
+          "action": "click",
+          "target": "Status filter menu item"
+        },
+        {
+          "action": "click",
+          "target": "Active toggle"
+        },
+        {
+          "action": "click",
+          "target": "filter panel Apply button"
+        },
+        {
+          "action": "click",
+          "target": "form Apply (submit) button"
+        },
+        {
+          "action": "fill",
+          "target": "search input",
+          "data": "an existing active supplier name"
+        },
+        {
+          "action": "press",
+          "target": "Enter"
+        },
+        {
+          "action": "assert",
+          "expected": "Result count narrows (<= Active-only count) and stays >= 1; filter is not reset by the search submit"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-index-download-csv",
+      "title": "downloads the suppliers list as CSV",
+      "priority": "medium",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "csv"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Download CSV link"
+        },
+        {
+          "action": "assert",
+          "expected": "A .csv file downloads with a header row (containing \"Supplier\" and \"Status\") plus at least one data row"
+        }
+      ]
+    }
+  ]
+}
