@@ -1,0 +1,58 @@
+{
+  "id": "service-providers-customs-brokers-create",
+  "feature": "Service Providers - Customs Brokers Create",
+  "source": "requirements/service-providers-customs-brokers-create.md",
+  "createdAt": "2026-09-16T00:00:00.000Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "customs-brokers-create-happy-path",
+      "title": "creates a new customs broker with all required fields filled",
+      "priority": "high",
+      "tags": ["service-providers", "customs-brokers", "create", "smoke"],
+      "steps": [
+        { "action": "setup", "data": "Logged in and navigated to Service Providers > Customs Brokers" },
+        { "action": "click", "target": "Add Customs Broker button" },
+        {
+          "action": "fill",
+          "target": "Company Name, Street Address, City, State, ZIP Code, Contact Name, Email, Telephone Number, Cell Number",
+          "data": "FakeFiller-style random data (@faker-js/faker) via buildFakeCustomsBrokerData()"
+        },
+        { "action": "select", "target": "Country combobox", "data": "United States" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"Customs broker created successfully.\" banner is shown" },
+        {
+          "action": "assert",
+          "expected": "Searching the new company name surfaces a row with the entered name, \"{city}, {state}, {country}\" location, and contact name"
+        }
+      ]
+    },
+    {
+      "id": "customs-brokers-create-company-required",
+      "title": "shows a validation error when Company Name is left blank",
+      "priority": "medium",
+      "tags": ["service-providers", "customs-brokers", "create", "negative"],
+      "steps": [
+        { "action": "click", "target": "Add Customs Broker button" },
+        { "action": "fill", "target": "all required fields except Company Name" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"The company name field is required.\" validation banner is shown; nothing is created" }
+      ]
+    },
+    {
+      "id": "customs-brokers-create-city-required",
+      "title": "shows a validation error when City is left blank",
+      "priority": "medium",
+      "tags": ["service-providers", "customs-brokers", "create", "negative"],
+      "steps": [
+        { "action": "click", "target": "Add Customs Broker button" },
+        { "action": "fill", "target": "all required fields except City" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"The city field is required.\" validation banner is shown; nothing is created" }
+      ],
+      "riskNotes": [
+        "Unlike Suppliers (where a blank City 500s with a raw debug page), this field fails gracefully here — verified live before writing this test, see project_conventions.md."
+      ]
+    }
+  ]
+}

@@ -14,6 +14,9 @@ self-repair the test suite, backed by a persistent on-disk memory store.
 - **Optional Claude backend** (`ANTHROPIC_API_KEY`) for the reasoning-heavy
   steps in each agent; every agent also has a deterministic, dependency-free
   fallback so the framework runs with zero configuration.
+- **@faker-js/faker** for FakeFiller-style random form data in the Suppliers
+  Create/Edit suites, so tests never hardcode a fixed company name that
+  could collide across runs.
 
 ## How the three agents interact
 
@@ -127,6 +130,39 @@ and calling each tool — run it with `npm run mcp:demo`.
   labelled "Apply" buttons) are recorded in `.agent-memory/project_conventions.md`.
   Requires `ADX_USERNAME`/`ADX_PASSWORD` in a local `.env` (see
   `.env.example`); the suite is skipped automatically if they're unset.
+- `tests/test_ServiceProviders_Suppliers_Create.spec.ts` and
+  `tests/test_ServiceProviders_Suppliers_Edit.spec.ts` — same live app, same
+  login/session discipline as the Index suite (log in unrecorded, then a
+  fresh authenticated context/page whose first navigation is straight to
+  `/v2/service-providers/suppliers`, so a headed run's recording begins
+  exactly there). Create exercises the "Add Supplier" drawer (a happy path
+  with `@faker-js/faker`-generated data, plus two negative-path validation
+  cases — a hidden-required field and a UI-marked-required one); Edit
+  creates its own throwaway fixture supplier and edits its contact details,
+  then its company name and location, then a negative-path validation case,
+  so neither suite mutates the real, pre-existing suppliers the Index suite
+  reads. Several more non-obvious, live-verified findings from these two
+  suites (the KTUI "data-kt-select" combobox mechanics behind
+  Country/Balance Timing, an icon-glyph accessible-name quirk, duplicate
+  desktop/mobile markup, and an unhandled-500 bug on a missing City) are
+  also recorded in `.agent-memory/project_conventions.md`.
+- `tests/test_ServiceProviders_FreightForwarders_Create.spec.ts`,
+  `tests/test_ServiceProviders_FreightForwarders_Edit.spec.ts`,
+  `tests/test_ServiceProviders_CustomsBrokers_Create.spec.ts`, and
+  `tests/test_ServiceProviders_CustomsBrokers_Edit.spec.ts` — same
+  discipline again (own page objects `pages/FreightForwardersPage.ts` /
+  `pages/CustomsBrokersPage.ts`, `@faker-js/faker` data, happy path + two
+  negative-path validations on Create, contact/company/location edits + one
+  negative-path validation on Edit, own throwaway fixtures on Edit, headed
+  recording starting exactly at the section's index URL). These two
+  sections look like Suppliers in the UI but were verified independently
+  rather than assumed to match it — and turned out **not** to: Freight
+  Forwarders redirects to the new record's detail page on create (Suppliers
+  and Customs Brokers stay on the index), each section renders a different
+  Location-column format, Customs Brokers' Edit is only reachable from the
+  detail page (no row-level "Edit" action at all), and Freight Forwarders'
+  row menu offers hard "Delete" instead of "Deactivate". The full
+  cross-section comparison table is in `.agent-memory/project_conventions.md`.
 
 ## Persistent agent memory (`.agent-memory/`)
 

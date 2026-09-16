@@ -1,0 +1,122 @@
+{
+  "id": "service-providers-suppliers-create",
+  "feature": "Service Providers - Suppliers Create",
+  "source": "requirements/service-providers-suppliers-create.md",
+  "createdAt": "2026-09-16T00:00:00.000Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "suppliers-create-happy-path",
+      "title": "creates a new supplier with all required fields filled",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "create",
+        "smoke"
+      ],
+      "steps": [
+        {
+          "action": "setup",
+          "data": "Logged in and navigated to Service Providers > Suppliers"
+        },
+        {
+          "action": "click",
+          "target": "Add Supplier button"
+        },
+        {
+          "action": "fill",
+          "target": "Company, Street Address, City, State, Contact Name, Phone Number, Email, Lead Time to US (Days)",
+          "data": "FakeFiller-style random data (@faker-js/faker) via buildFakeSupplierData()"
+        },
+        {
+          "action": "select",
+          "target": "Country combobox",
+          "data": "United States"
+        },
+        {
+          "action": "select",
+          "target": "Balance Timing combobox",
+          "data": "Per shipment (FOB / ETD)"
+        },
+        {
+          "action": "click",
+          "target": "Create (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "\"Supplier created successfully.\" banner is shown"
+        },
+        {
+          "action": "assert",
+          "expected": "Searching the new company name surfaces a row with the entered supplier name, \"{state}, {country}\" location, and contact name"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-create-balance-timing-required",
+      "title": "shows a validation error when Balance Timing is left blank",
+      "priority": "medium",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "create",
+        "negative"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Supplier button"
+        },
+        {
+          "action": "fill",
+          "target": "all required fields except Balance Timing"
+        },
+        {
+          "action": "click",
+          "target": "Create (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "\"The balance payment timing field is required.\" validation banner is shown; no supplier is created"
+        }
+      ],
+      "riskNotes": [
+        "Balance Timing has no \"*\" in the UI but is required server-side — verified live, see project_conventions.md.",
+        "City is likewise unmarked but a NOT NULL DB column with no validation rule (an unhandled 500 debug page, not a graceful error) — deliberately not covered by an automated negative test; see requirements/service-providers-suppliers-create.md and project_conventions.md."
+      ]
+    },
+    {
+      "id": "suppliers-create-company-required",
+      "title": "shows a validation error when Company is left blank",
+      "priority": "medium",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "create",
+        "negative"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "Add Supplier button"
+        },
+        {
+          "action": "fill",
+          "target": "all required fields except Company"
+        },
+        {
+          "action": "click",
+          "target": "Create (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "\"The company name field is required.\" validation banner is shown; no supplier is created"
+        }
+      ],
+      "riskNotes": [
+        "Confirmed live: unlike City, Company IS covered by a graceful validation rule (no 500) — verified before writing this test."
+      ]
+    }
+  ]
+}

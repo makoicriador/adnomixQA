@@ -29,4 +29,22 @@ export class HomePage extends BasePage {
       this.page.getByText(/Suppliers/i).first().click(),
     ]);
   }
+
+  /** Same sidebar accordion quirk as navigateToSuppliers — confirmed live for this child link too. */
+  async navigateToFreightForwarders(): Promise<void> {
+    await this.page.getByText(/Service Providers/i).first().click();
+    await Promise.all([
+      this.page.waitForURL(/\/v2\/service-providers\/freight-forwarders/, { timeout: 15_000 }),
+      this.page.getByText(/Freight Forwarders/i).first().click(),
+    ]);
+  }
+
+  /** Same sidebar accordion quirk as navigateToSuppliers — confirmed live for this child link too. */
+  async navigateToCustomsBrokers(): Promise<void> {
+    await this.page.getByText(/Service Providers/i).first().click();
+    await Promise.all([
+      this.page.waitForURL(/\/v2\/service-providers\/customs-brokers/, { timeout: 15_000 }),
+      this.page.getByText(/Customs Brokers/i).first().click(),
+    ]);
+  }
 }

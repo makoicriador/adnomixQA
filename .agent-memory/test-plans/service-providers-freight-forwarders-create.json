@@ -1,0 +1,61 @@
+{
+  "id": "service-providers-freight-forwarders-create",
+  "feature": "Service Providers - Freight Forwarders Create",
+  "source": "requirements/service-providers-freight-forwarders-create.md",
+  "createdAt": "2026-09-16T00:00:00.000Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "freight-forwarders-create-happy-path",
+      "title": "creates a new freight forwarder with all required fields filled",
+      "priority": "high",
+      "tags": ["service-providers", "freight-forwarders", "create", "smoke"],
+      "steps": [
+        { "action": "setup", "data": "Logged in and navigated to Service Providers > Freight Forwarders" },
+        { "action": "click", "target": "Add Freight Forwarder button" },
+        {
+          "action": "fill",
+          "target": "Company Name, Street Address, City, State, ZIP Code, Contact Name, Telephone Number, Email",
+          "data": "FakeFiller-style random data (@faker-js/faker) via buildFakeFreightForwarderData()"
+        },
+        { "action": "select", "target": "Country combobox", "data": "United States" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"Freight forwarder created successfully.\" banner is shown" },
+        {
+          "action": "assert",
+          "expected": "Back on the index (this section redirects to the new record's detail page on success), searching the new company name surfaces a row with the entered name, \"{city}, {country}\" location, and contact name"
+        }
+      ],
+      "riskNotes": [
+        "Unlike Suppliers/Customs Brokers, a successful create redirects to the new record's own detail page rather than staying on the index — verified live, see project_conventions.md."
+      ]
+    },
+    {
+      "id": "freight-forwarders-create-company-required",
+      "title": "shows a validation error when Company Name is left blank",
+      "priority": "medium",
+      "tags": ["service-providers", "freight-forwarders", "create", "negative"],
+      "steps": [
+        { "action": "click", "target": "Add Freight Forwarder button" },
+        { "action": "fill", "target": "all required fields except Company Name" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"The company name field is required.\" validation banner is shown; nothing is created" }
+      ]
+    },
+    {
+      "id": "freight-forwarders-create-city-required",
+      "title": "shows a validation error when City is left blank",
+      "priority": "medium",
+      "tags": ["service-providers", "freight-forwarders", "create", "negative"],
+      "steps": [
+        { "action": "click", "target": "Add Freight Forwarder button" },
+        { "action": "fill", "target": "all required fields except City" },
+        { "action": "click", "target": "Create (drawer submit button)" },
+        { "action": "assert", "expected": "\"The city field is required.\" validation banner is shown; nothing is created" }
+      ],
+      "riskNotes": [
+        "Unlike Suppliers (where a blank City 500s with a raw debug page), this field fails gracefully here — verified live before writing this test, see project_conventions.md."
+      ]
+    }
+  ]
+}

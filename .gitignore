@@ -7,3 +7,4 @@ playwright/.cache/
 .env
 *.log
 .agent-memory/.mcp-demo-scratch.txt
+recordings/

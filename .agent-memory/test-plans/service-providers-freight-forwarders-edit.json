@@ -1,0 +1,67 @@
+{
+  "id": "service-providers-freight-forwarders-edit",
+  "feature": "Service Providers - Freight Forwarders Edit",
+  "source": "requirements/service-providers-freight-forwarders-edit.md",
+  "createdAt": "2026-09-16T00:00:00.000Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "freight-forwarders-edit-fixture-setup",
+      "title": "creates a throwaway fixture freight forwarder for this suite to edit",
+      "priority": "high",
+      "tags": ["service-providers", "freight-forwarders", "edit", "setup"],
+      "steps": [
+        { "action": "setup", "data": "Logged in and navigated to Service Providers > Freight Forwarders" },
+        {
+          "action": "setup",
+          "data": "Create a freight forwarder via FreightForwardersPage.createFreightForwarder(buildFakeFreightForwarderData()) so later scenarios never mutate a real, pre-existing record"
+        }
+      ]
+    },
+    {
+      "id": "freight-forwarders-edit-contact-details",
+      "title": "updates a freight forwarder's contact details",
+      "priority": "high",
+      "tags": ["service-providers", "freight-forwarders", "edit", "smoke"],
+      "steps": [
+        { "action": "click", "target": "row kebab (⋮) menu > Edit" },
+        { "action": "fill", "target": "Contact Name, Telephone Number, Email, Fax", "data": "new @faker-js/faker-generated values" },
+        { "action": "click", "target": "Save Changes (drawer submit button)" },
+        {
+          "action": "assert",
+          "expected": "\"Freight forwarder updated successfully.\" banner is shown on the redirected detail page, which displays the new contact name, telephone number, and email"
+        }
+      ]
+    },
+    {
+      "id": "freight-forwarders-edit-company-and-location",
+      "title": "updates a freight forwarder's company name and location",
+      "priority": "high",
+      "tags": ["service-providers", "freight-forwarders", "edit"],
+      "steps": [
+        { "action": "click", "target": "row kebab (⋮) menu > Edit" },
+        { "action": "fill", "target": "Company Name, City, State", "data": "new name + new @faker-js/faker-generated city/state" },
+        { "action": "select", "target": "Country combobox", "data": "United States" },
+        { "action": "click", "target": "Save Changes (drawer submit button)" },
+        { "action": "assert", "expected": "Detail page heading shows the new company name" },
+        { "action": "assert", "expected": "Index, searched by the new name, shows a row with the new name and \"{city}, United States\" location" }
+      ],
+      "riskNotes": [
+        "The Location column is \"{city}, {country}\", not \"{state}, {country}\" like Suppliers — verified live, see project_conventions.md."
+      ]
+    },
+    {
+      "id": "freight-forwarders-edit-company-required",
+      "title": "shows a validation error when Company Name is cleared",
+      "priority": "medium",
+      "tags": ["service-providers", "freight-forwarders", "edit", "negative"],
+      "steps": [
+        { "action": "click", "target": "row kebab (⋮) menu > Edit" },
+        { "action": "fill", "target": "Company Name", "data": "empty string" },
+        { "action": "click", "target": "Save Changes (drawer submit button)" },
+        { "action": "assert", "expected": "\"The company name field is required.\" validation banner is shown" },
+        { "action": "assert", "expected": "Index still shows the record under its original (unchanged) name" }
+      ]
+    }
+  ]
+}

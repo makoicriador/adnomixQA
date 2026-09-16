@@ -1,0 +1,138 @@
+{
+  "id": "service-providers-suppliers-edit",
+  "feature": "Service Providers - Suppliers Edit",
+  "source": "requirements/service-providers-suppliers-edit.md",
+  "createdAt": "2026-09-16T00:00:00.000Z",
+  "riskAreas": [],
+  "cases": [
+    {
+      "id": "suppliers-edit-fixture-setup",
+      "title": "creates a throwaway fixture supplier for this suite to edit",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "edit",
+        "setup"
+      ],
+      "steps": [
+        {
+          "action": "setup",
+          "data": "Logged in and navigated to Service Providers > Suppliers"
+        },
+        {
+          "action": "setup",
+          "data": "Create a supplier via SuppliersPage.createSupplier(buildFakeSupplierData()) so later scenarios never mutate a real, pre-existing supplier"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-edit-contact-details",
+      "title": "updates a supplier's contact details",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "edit",
+        "smoke"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "row kebab (⋮) menu > Edit"
+        },
+        {
+          "action": "fill",
+          "target": "Contact Name, Phone Number, Email, Business License Number",
+          "data": "new @faker-js/faker-generated values"
+        },
+        {
+          "action": "click",
+          "target": "Save Changes (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "\"Supplier details updated successfully.\" banner is shown on the redirected detail page, which displays the new contact name, phone, email, and license number"
+        }
+      ]
+    },
+    {
+      "id": "suppliers-edit-company-and-location",
+      "title": "updates a supplier's company name and location",
+      "priority": "high",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "edit"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "row kebab (⋮) menu > Edit"
+        },
+        {
+          "action": "fill",
+          "target": "Company, City, State",
+          "data": "new name + new @faker-js/faker-generated city/state"
+        },
+        {
+          "action": "select",
+          "target": "Country combobox",
+          "data": "United States"
+        },
+        {
+          "action": "click",
+          "target": "Save Changes (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "Detail page heading shows the new company name"
+        },
+        {
+          "action": "assert",
+          "expected": "Suppliers index, searched by the new name, shows a row with the new name and \"{state}, United States\" location"
+        }
+      ],
+      "riskNotes": [
+        "The Location column is \"{state}, {country}\", not \"{city}, {country}\" — verified live, see project_conventions.md."
+      ]
+    },
+    {
+      "id": "suppliers-edit-company-required",
+      "title": "shows a validation error when Company is cleared",
+      "priority": "medium",
+      "tags": [
+        "service-providers",
+        "suppliers",
+        "edit",
+        "negative"
+      ],
+      "steps": [
+        {
+          "action": "click",
+          "target": "row kebab (⋮) menu > Edit"
+        },
+        {
+          "action": "fill",
+          "target": "Company",
+          "data": "empty string"
+        },
+        {
+          "action": "click",
+          "target": "Save Changes (drawer submit button)"
+        },
+        {
+          "action": "assert",
+          "expected": "\"The company name field is required.\" validation banner is shown"
+        },
+        {
+          "action": "assert",
+          "expected": "Suppliers index still shows the supplier under its original (unchanged) name"
+        }
+      ],
+      "riskNotes": [
+        "Confirmed live: a failed validation submit does not persist the blank value — the supplier's existing name is left intact."
+      ]
+    }
+  ]
+}
