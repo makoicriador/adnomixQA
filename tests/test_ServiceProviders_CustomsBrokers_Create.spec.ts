@@ -2,6 +2,8 @@ import { test, expect, Page, BrowserContext } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { CustomsBrokersPage, buildFakeCustomsBrokerData } from '../pages/CustomsBrokersPage';
+import { buildFakeBankAccountData } from '../pages/BankAccountsSection';
+import { attachPageHealthMonitor, describeIssues, PageIssue } from './utils/errorScraper';
 
 const USERNAME = process.env.ADX_USERNAME;
 const PASSWORD = process.env.ADX_PASSWORD;
@@ -27,6 +29,7 @@ test.describe('Service Providers > Customs Brokers Create', () => {
   let context: BrowserContext;
   let page: Page;
   let customsBrokers: CustomsBrokersPage;
+  let issues: PageIssue[];
 
   test.beforeAll(async ({ browser }) => {
     test.skip(!USERNAME || !PASSWORD, 'ADX_USERNAME / ADX_PASSWORD are not set — see .env.example.');
@@ -59,6 +62,7 @@ test.describe('Service Providers > Customs Brokers Create', () => {
       ...(isHeaded ? { recordVideo: { dir: 'test-results/videos', size: { width: 1440, height: 900 } } } : {}),
     });
     page = await context.newPage();
+    issues = attachPageHealthMonitor(page);
 
     customsBrokers = new CustomsBrokersPage(page);
     await customsBrokers.goto();
@@ -68,16 +72,23 @@ test.describe('Service Providers > Customs Brokers Create', () => {
     const video = page?.video();
     await context?.close();
     if (video) console.log('Recording saved to:', await video.path());
+    if (issues.length) console.warn(`[Page health] ${issues.length} issue(s) detected:\n${describeIssues(issues)}`);
+    expect(issues, 'No uncaught JS exceptions or 5xx server errors should occur during this suite').toEqual([]);
   });
 
   test.beforeEach(async () => {
     await customsBrokers.resetToCleanState();
   });
 
-  test('creates a new customs broker with all required fields filled', async () => {
+  test('creates a new customs broker with all required fields filled and a bank account', async () => {
     const data = buildFakeCustomsBrokerData();
+    const bankAccount = buildFakeBankAccountData();
 
-    await customsBrokers.createCustomsBroker(data);
+    // The Bank Accounts section lives inside the same Create drawer form
+    // (confirmed live) — createCustomsBroker's optional `bankAccount` adds
+    // it before the drawer's own Create button submits everything together
+    // in one request.
+    await customsBrokers.createCustomsBroker(data, { bankAccount });
     await expect(customsBrokers.successAlert.first()).toContainText('Customs broker created successfully.');
 
     await customsBrokers.search(data.companyName);
@@ -89,6 +100,13 @@ test.describe('Service Providers > Customs Brokers Create', () => {
     // ("{city}, {country}"). Confirmed live, not assumed to match either.
     await expect(row).toContainText(`${data.city}, ${data.state}, ${data.country}`);
     await expect(row).toContainText(data.contactName);
+
+    // Confirm the bank account actually persisted, not just that the form
+    // accepted it — reopen the Edit drawer (via the detail page's own
+    // "Edit" button — see CustomsBrokersPage.openEditFor) and check its
+    // Bank Accounts section shows the bank name we just added.
+    await customsBrokers.openEditFor(data.companyName);
+    await expect(customsBrokers.bankAccounts.rowContaining(bankAccount.bankName)).toContainText(bankAccount.bankName);
   });
 
   test('shows a validation error when Company Name is left blank', async () => {

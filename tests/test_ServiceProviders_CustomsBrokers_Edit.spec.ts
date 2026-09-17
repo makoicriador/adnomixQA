@@ -3,6 +3,8 @@ import { faker } from '@faker-js/faker';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { CustomsBrokersPage, buildFakeCustomsBrokerData } from '../pages/CustomsBrokersPage';
+import { buildFakeBankAccountData } from '../pages/BankAccountsSection';
+import { attachPageHealthMonitor, describeIssues, PageIssue } from './utils/errorScraper';
 
 const USERNAME = process.env.ADX_USERNAME;
 const PASSWORD = process.env.ADX_PASSWORD;
@@ -32,6 +34,7 @@ test.describe('Service Providers > Customs Brokers Edit', () => {
   let context: BrowserContext;
   let page: Page;
   let customsBrokers: CustomsBrokersPage;
+  let issues: PageIssue[];
   let currentCompanyName: string;
 
   test.beforeAll(async ({ browser }) => {
@@ -65,6 +68,7 @@ test.describe('Service Providers > Customs Brokers Edit', () => {
       ...(isHeaded ? { recordVideo: { dir: 'test-results/videos', size: { width: 1440, height: 900 } } } : {}),
     });
     page = await context.newPage();
+    issues = attachPageHealthMonitor(page);
 
     customsBrokers = new CustomsBrokersPage(page);
     await customsBrokers.goto();
@@ -81,6 +85,8 @@ test.describe('Service Providers > Customs Brokers Edit', () => {
     const video = page?.video();
     await context?.close();
     if (video) console.log('Recording saved to:', await video.path());
+    if (issues.length) console.warn(`[Page health] ${issues.length} issue(s) detected:\n${describeIssues(issues)}`);
+    expect(issues, 'No uncaught JS exceptions or 5xx server errors should occur during this suite').toEqual([]);
   });
 
   test.beforeEach(async () => {
@@ -128,6 +134,21 @@ test.describe('Service Providers > Customs Brokers Edit', () => {
     const row = customsBrokers.rowsContaining(newCompanyName).first();
     await expect(row).toBeVisible();
     await expect(row).toContainText(`${newCity}, ${newState}, United States`);
+  });
+
+  test('adds a bank account to the customs broker', async () => {
+    const bankAccount = buildFakeBankAccountData();
+
+    await customsBrokers.openEditFor(currentCompanyName);
+    await customsBrokers.saveEdit({}, { bankAccount });
+
+    await expect(customsBrokers.successAlert.first()).toContainText('Customs broker updated successfully.');
+
+    // Confirm it actually persisted — reopen the Edit drawer and check the
+    // Bank Accounts section lists it.
+    await customsBrokers.resetToCleanState();
+    await customsBrokers.openEditFor(currentCompanyName);
+    await expect(customsBrokers.bankAccounts.rowContaining(bankAccount.bankName)).toContainText(bankAccount.bankName);
   });
 
   test('shows a validation error when Company Name is cleared', async () => {

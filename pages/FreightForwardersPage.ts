@@ -1,8 +1,18 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, Download } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { BasePage } from './BasePage';
+import { BankAccountsSection, BankAccountFormData } from './BankAccountsSection';
 
 const BASE_URL = process.env.ADX_BASE_URL || 'https://adxmanager.dev';
+
+export type FreightForwarderStatus = 'Active' | 'Inactive';
+
+export interface FreightForwarderRow {
+  company: string;
+  location: string;
+  contact: string;
+  email: string;
+}
 
 /**
  * Fields for the Add Freight Forwarder / Edit Freight Forwarder forms. All
@@ -68,6 +78,11 @@ export function buildFakeFreightForwarderData(
  *    Timing/City. Confirmed live before relying on it.
  *  - The Location column here renders "{city}, {country}" — a different
  *    format from Suppliers' "{state}, {country}".
+ *  - The Status filter is a "Filter" button that toggles a drawer
+ *    (`#form-freight-forwarders-index-drawer`) with a single "Update" submit
+ *    button — confirmed live to be a genuinely different mechanism from
+ *    Suppliers' "Add Filter" dropdown + two identically-labelled "Apply"
+ *    buttons (see SuppliersPage doc comment); do not assume they match.
  */
 export class FreightForwardersPage extends BasePage {
   constructor(page: Page) {
@@ -90,6 +105,24 @@ export class FreightForwardersPage extends BasePage {
     return this.page.locator('#edit-freight-forwarder-drawer');
   }
 
+  private get filterButton(): Locator {
+    // Verified live: preceded by a KTUI icon-font glyph (same accessible-name
+    // quirk documented elsewhere in this app) — substring match, no `exact`.
+    return this.page.getByRole('button', { name: 'Filter' });
+  }
+
+  private get filterDrawer(): Locator {
+    return this.page.locator('#form-freight-forwarders-index-drawer');
+  }
+
+  private get downloadCsvLink(): Locator {
+    return this.page.getByRole('link', { name: 'Download CSV' });
+  }
+
+  private get resultsSummary(): Locator {
+    return this.page.getByText(/Showing \d+ of \d+ results/);
+  }
+
   private get tableRows(): Locator {
     return this.page.locator('table tbody tr');
   }
@@ -100,6 +133,11 @@ export class FreightForwardersPage extends BasePage {
 
   get errorAlert(): Locator {
     return this.page.locator('.kt-alert-destructive');
+  }
+
+  /** Drives the "Bank accounts" section shared verbatim with Suppliers/Customs Brokers (see BankAccountsSection.ts) — present in both the Create and Edit drawers here. */
+  get bankAccounts(): BankAccountsSection {
+    return new BankAccountsSection(this.page);
   }
 
   rowsContaining(term: string): Locator {
@@ -119,6 +157,71 @@ export class FreightForwardersPage extends BasePage {
   async search(term: string): Promise<void> {
     await this.searchInput.fill(term);
     await Promise.all([this.page.waitForLoadState('domcontentloaded'), this.searchInput.press('Enter')]);
+  }
+
+  async getResultsSummaryText(): Promise<string> {
+    return (await this.resultsSummary.textContent())?.trim() ?? '';
+  }
+
+  async getResultsCount(): Promise<number> {
+    const match = (await this.getResultsSummaryText()).match(/of (\d+) results/);
+    if (!match) throw new Error('Could not parse results count from summary text.');
+    return Number(match[1]);
+  }
+
+  /** Reads up to `limit` visible rows in a single page.evaluate round trip (see SuppliersPage.getRows for the rationale). */
+  async getRows(limit = 25): Promise<FreightForwarderRow[]> {
+    return this.tableRows.evaluateAll(
+      (rows: any[], max: number) =>
+        rows.slice(0, max).map((row: any) => {
+          const cells = row.querySelectorAll('td');
+          const text = (i: number) => (cells[i]?.textContent ?? '').trim();
+          return { company: text(0), location: text(1), contact: text(3), email: text(7) };
+        }),
+      limit
+    );
+  }
+
+  /** Finds the first row with a real (non "—") value for the given field, so a search never runs on a placeholder dash. */
+  async findRowWithValue(field: keyof FreightForwarderRow): Promise<FreightForwarderRow> {
+    const rows = await this.getRows();
+    const row = rows.find((r) => r[field] && r[field] !== '—');
+    if (!row) throw new Error(`No row in the current view has a usable "${field}" value to search with.`);
+    return row;
+  }
+
+  /**
+   * Opens the "Filter" drawer, reconciles each status toggle to the desired
+   * checked/unchecked state, then submits via its single "Update" button.
+   * Reconciling against each checkbox's actual current state (rather than
+   * blindly clicking every requested status) avoids the bug confirmed live
+   * on Customs Brokers, whose "Active" toggle is pre-checked by default —
+   * see CustomsBrokersPage.filterByStatus.
+   */
+  async filterByStatus(statuses: FreightForwarderStatus[]): Promise<void> {
+    await this.filterButton.click();
+    await this.filterDrawer.waitFor({ state: 'visible' });
+    const allStatuses: FreightForwarderStatus[] = ['Active', 'Inactive'];
+    for (const status of allStatuses) {
+      const checkbox = this.filterDrawer.locator(`input[type="checkbox"][value="${status}"]`);
+      const isChecked = await checkbox.isChecked();
+      const shouldBeChecked = statuses.includes(status);
+      if (isChecked !== shouldBeChecked) {
+        await this.filterDrawer.getByText(status, { exact: true }).click();
+      }
+    }
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      this.filterDrawer.getByRole('button', { name: 'Update', exact: true }).click(),
+    ]);
+  }
+
+  async downloadCsv(): Promise<Download> {
+    const [download] = await Promise.all([
+      this.page.waitForEvent('download', { timeout: 20_000 }),
+      this.downloadCsvLink.click(),
+    ]);
+    return download;
   }
 
   /** Same KTUI "data-kt-select" combobox mechanics as SuppliersPage.selectKtOption. */
@@ -154,18 +257,25 @@ export class FreightForwardersPage extends BasePage {
     await this.createDrawer.locator('#company_name_create').waitFor({ state: 'visible' });
   }
 
-  /** Fills and submits the Add drawer, leaving the resulting banner (success or error) for the caller to assert. */
-  async submitCreateDrawer(data: Partial<FreightForwarderFormData>): Promise<void> {
+  /**
+   * Fills and submits the Add drawer, leaving the resulting banner (success
+   * or error) for the caller to assert. An optional `bankAccount` is added
+   * to the same Bank Accounts section before submitting — it's part of the
+   * same enclosing form, so it persists together with everything else in
+   * one request rather than needing a separate save.
+   */
+  async submitCreateDrawer(data: Partial<FreightForwarderFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.openAddDrawer();
     await this.fillForm('create', data);
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     await Promise.all([
       this.page.waitForLoadState('domcontentloaded'),
       this.createDrawer.getByRole('button', { name: 'Create', exact: true }).first().click(),
     ]);
   }
 
-  async createFreightForwarder(data: FreightForwarderFormData): Promise<void> {
-    await this.submitCreateDrawer(data);
+  async createFreightForwarder(data: FreightForwarderFormData, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
+    await this.submitCreateDrawer(data, options);
   }
 
   /**
@@ -185,8 +295,9 @@ export class FreightForwardersPage extends BasePage {
     await this.editDrawer.locator('#company_name_edit').waitFor({ state: 'visible' });
   }
 
-  async saveEdit(data: Partial<FreightForwarderFormData>): Promise<void> {
+  async saveEdit(data: Partial<FreightForwarderFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.fillForm('edit', data);
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     await Promise.all([
       this.page.waitForLoadState('domcontentloaded'),
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),

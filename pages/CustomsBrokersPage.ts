@@ -1,8 +1,18 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, Download } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { BasePage } from './BasePage';
+import { BankAccountsSection, BankAccountFormData } from './BankAccountsSection';
 
 const BASE_URL = process.env.ADX_BASE_URL || 'https://adxmanager.dev';
+
+export type CustomsBrokerStatus = 'Active' | 'Inactive';
+
+export interface CustomsBrokerRow {
+  company: string;
+  location: string;
+  contact: string;
+  email: string;
+}
 
 /**
  * Fields for the Add Customs Broker / Edit Customs Broker forms. All
@@ -70,6 +80,11 @@ export function buildFakeCustomsBrokerData(overrides: Partial<CustomsBrokerFormD
  *    Freight Forwarders ("{city}, {country}").
  *  - All "*"-marked fields fail gracefully server-side (no unhandled 500
  *    like Suppliers' City) — confirmed live before relying on it.
+ *  - The Status filter is a "Filter" button that toggles a drawer
+ *    (`#form-customs-brokers-index-drawer`) with a single "Update" submit
+ *    button — same mechanism as Freight Forwarders/Warehouses, confirmed
+ *    live to be genuinely different from Suppliers' "Add Filter" dropdown +
+ *    two identically-labelled "Apply" buttons.
  */
 export class CustomsBrokersPage extends BasePage {
   constructor(page: Page) {
@@ -96,6 +111,24 @@ export class CustomsBrokersPage extends BasePage {
     return this.page.locator('#edit-button');
   }
 
+  private get filterButton(): Locator {
+    // Verified live: preceded by a KTUI icon-font glyph (same accessible-name
+    // quirk documented elsewhere in this app) — substring match, no `exact`.
+    return this.page.getByRole('button', { name: 'Filter' });
+  }
+
+  private get filterDrawer(): Locator {
+    return this.page.locator('#form-customs-brokers-index-drawer');
+  }
+
+  private get downloadCsvLink(): Locator {
+    return this.page.getByRole('link', { name: 'Download CSV' });
+  }
+
+  private get resultsSummary(): Locator {
+    return this.page.getByText(/Showing \d+ of \d+ results/);
+  }
+
   private get tableRows(): Locator {
     return this.page.locator('table tbody tr');
   }
@@ -106,6 +139,11 @@ export class CustomsBrokersPage extends BasePage {
 
   get errorAlert(): Locator {
     return this.page.locator('.kt-alert-destructive');
+  }
+
+  /** Drives the "Bank accounts" section shared verbatim with Suppliers/Freight Forwarders (see BankAccountsSection.ts) — present in both the Create and Edit drawers here. */
+  get bankAccounts(): BankAccountsSection {
+    return new BankAccountsSection(this.page);
   }
 
   rowsContaining(term: string): Locator {
@@ -125,6 +163,73 @@ export class CustomsBrokersPage extends BasePage {
   async search(term: string): Promise<void> {
     await this.searchInput.fill(term);
     await Promise.all([this.page.waitForLoadState('domcontentloaded'), this.searchInput.press('Enter')]);
+  }
+
+  async getResultsSummaryText(): Promise<string> {
+    return (await this.resultsSummary.textContent())?.trim() ?? '';
+  }
+
+  async getResultsCount(): Promise<number> {
+    const match = (await this.getResultsSummaryText()).match(/of (\d+) results/);
+    if (!match) throw new Error('Could not parse results count from summary text.');
+    return Number(match[1]);
+  }
+
+  /** Reads up to `limit` visible rows in a single page.evaluate round trip (see SuppliersPage.getRows for the rationale). */
+  async getRows(limit = 25): Promise<CustomsBrokerRow[]> {
+    return this.tableRows.evaluateAll(
+      (rows: any[], max: number) =>
+        rows.slice(0, max).map((row: any) => {
+          const cells = row.querySelectorAll('td');
+          const text = (i: number) => (cells[i]?.textContent ?? '').trim();
+          return { company: text(0), location: text(1), contact: text(2), email: text(6) };
+        }),
+      limit
+    );
+  }
+
+  /** Finds the first row with a real (non "—") value for the given field, so a search never runs on a placeholder dash. */
+  async findRowWithValue(field: keyof CustomsBrokerRow): Promise<CustomsBrokerRow> {
+    const rows = await this.getRows();
+    const row = rows.find((r) => r[field] && r[field] !== '—');
+    if (!row) throw new Error(`No row in the current view has a usable "${field}" value to search with.`);
+    return row;
+  }
+
+  /**
+   * Opens the "Filter" drawer, reconciles each status toggle to the desired
+   * checked/unchecked state, then submits via its single "Update" button.
+   * Verified live: unlike Freight Forwarders/Warehouses, this drawer's
+   * "Active" toggle is pre-checked by default even with no filter applied —
+   * blindly clicking every requested status (rather than checking its
+   * current state first) silently UNCHECKS "Active" instead of checking it,
+   * corrupting the resulting filter. Reconciling against the checkbox's
+   * actual state avoids assuming either default.
+   */
+  async filterByStatus(statuses: CustomsBrokerStatus[]): Promise<void> {
+    await this.filterButton.click();
+    await this.filterDrawer.waitFor({ state: 'visible' });
+    const allStatuses: CustomsBrokerStatus[] = ['Active', 'Inactive'];
+    for (const status of allStatuses) {
+      const checkbox = this.filterDrawer.locator(`input[type="checkbox"][value="${status}"]`);
+      const isChecked = await checkbox.isChecked();
+      const shouldBeChecked = statuses.includes(status);
+      if (isChecked !== shouldBeChecked) {
+        await this.filterDrawer.getByText(status, { exact: true }).click();
+      }
+    }
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      this.filterDrawer.getByRole('button', { name: 'Update', exact: true }).click(),
+    ]);
+  }
+
+  async downloadCsv(): Promise<Download> {
+    const [download] = await Promise.all([
+      this.page.waitForEvent('download', { timeout: 20_000 }),
+      this.downloadCsvLink.click(),
+    ]);
+    return download;
   }
 
   /** Same KTUI "data-kt-select" combobox mechanics as SuppliersPage.selectKtOption. */
@@ -160,18 +265,24 @@ export class CustomsBrokersPage extends BasePage {
     await this.createDrawer.locator('#company_name_create').waitFor({ state: 'visible' });
   }
 
-  /** Fills and submits the Add drawer, leaving the resulting banner (success or error) for the caller to assert. */
-  async submitCreateDrawer(data: Partial<CustomsBrokerFormData>): Promise<void> {
+  /**
+   * Fills and submits the Add drawer, leaving the resulting banner (success
+   * or error) for the caller to assert. An optional `bankAccount` is added
+   * to the same Bank Accounts section before submitting (see
+   * BankAccountsSection.ts).
+   */
+  async submitCreateDrawer(data: Partial<CustomsBrokerFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.openAddDrawer();
     await this.fillForm('create', data);
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     await Promise.all([
       this.page.waitForLoadState('domcontentloaded'),
       this.createDrawer.getByRole('button', { name: 'Create', exact: true }).first().click(),
     ]);
   }
 
-  async createCustomsBroker(data: CustomsBrokerFormData): Promise<void> {
-    await this.submitCreateDrawer(data);
+  async createCustomsBroker(data: CustomsBrokerFormData, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
+    await this.submitCreateDrawer(data, options);
   }
 
   /**
@@ -191,8 +302,9 @@ export class CustomsBrokersPage extends BasePage {
    * On success this stays on the same detail URL (the edit drawer is a
    * client-side overlay, not a page navigation) — confirmed live.
    */
-  async saveEdit(data: Partial<CustomsBrokerFormData>): Promise<void> {
+  async saveEdit(data: Partial<CustomsBrokerFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.fillForm('edit', data);
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     await Promise.all([
       this.page.waitForLoadState('domcontentloaded'),
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),

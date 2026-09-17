@@ -3,6 +3,8 @@ import { faker } from '@faker-js/faker';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { FreightForwardersPage, buildFakeFreightForwarderData } from '../pages/FreightForwardersPage';
+import { buildFakeBankAccountData } from '../pages/BankAccountsSection';
+import { attachPageHealthMonitor, describeIssues, PageIssue } from './utils/errorScraper';
 
 const USERNAME = process.env.ADX_USERNAME;
 const PASSWORD = process.env.ADX_PASSWORD;
@@ -29,6 +31,7 @@ test.describe('Service Providers > Freight Forwarders Edit', () => {
   let context: BrowserContext;
   let page: Page;
   let freightForwarders: FreightForwardersPage;
+  let issues: PageIssue[];
   let currentCompanyName: string;
 
   test.beforeAll(async ({ browser }) => {
@@ -62,6 +65,7 @@ test.describe('Service Providers > Freight Forwarders Edit', () => {
       ...(isHeaded ? { recordVideo: { dir: 'test-results/videos', size: { width: 1440, height: 900 } } } : {}),
     });
     page = await context.newPage();
+    issues = attachPageHealthMonitor(page);
 
     freightForwarders = new FreightForwardersPage(page);
     await freightForwarders.goto();
@@ -81,6 +85,8 @@ test.describe('Service Providers > Freight Forwarders Edit', () => {
     const video = page?.video();
     await context?.close();
     if (video) console.log('Recording saved to:', await video.path());
+    if (issues.length) console.warn(`[Page health] ${issues.length} issue(s) detected:\n${describeIssues(issues)}`);
+    expect(issues, 'No uncaught JS exceptions or 5xx server errors should occur during this suite').toEqual([]);
   });
 
   test.beforeEach(async () => {
@@ -127,6 +133,21 @@ test.describe('Service Providers > Freight Forwarders Edit', () => {
     const row = freightForwarders.rowsContaining(newCompanyName).first();
     await expect(row).toBeVisible();
     await expect(row).toContainText(`${newCity}, United States`);
+  });
+
+  test('adds a bank account to the freight forwarder', async () => {
+    const bankAccount = buildFakeBankAccountData();
+
+    await freightForwarders.openEditFor(currentCompanyName);
+    await freightForwarders.saveEdit({}, { bankAccount });
+
+    await expect(freightForwarders.successAlert.first()).toContainText('Freight forwarder updated successfully.');
+
+    // Confirm it actually persisted — reopen the Edit drawer and check the
+    // Bank Accounts section lists it.
+    await freightForwarders.resetToCleanState();
+    await freightForwarders.openEditFor(currentCompanyName);
+    await expect(freightForwarders.bankAccounts.rowContaining(bankAccount.bankName)).toContainText(bankAccount.bankName);
   });
 
   test('shows a validation error when Company Name is cleared', async () => {

@@ -163,6 +163,51 @@ and calling each tool — run it with `npm run mcp:demo`.
   detail page (no row-level "Edit" action at all), and Freight Forwarders'
   row menu offers hard "Delete" instead of "Deactivate". The full
   cross-section comparison table is in `.agent-memory/project_conventions.md`.
+- `tests/test_ServiceProviders_FreightForwardersIndex.spec.ts` and
+  `tests/test_ServiceProviders_CustomsBrokersIndex.spec.ts` — same coverage
+  as the Suppliers Index suite (search by name/contact/location/email, the
+  Status filter, CSV export) for these two sections, plus an end-to-end
+  create-with-a-bank-account-then-search scenario against a throwaway
+  fixture. All three sections' Status filter (Suppliers included, as of
+  2026-09-17 — see below) is a "Filter" button that opens a drawer with
+  Active/Inactive toggle buttons and a single "Update" submit button.
+- `tests/test_ServiceProviders_WarehousesIndex.spec.ts`,
+  `tests/test_ServiceProviders_Warehouses_Create.spec.ts`,
+  `tests/test_ServiceProviders_Warehouses_Edit.spec.ts`, and
+  `tests/test_ServiceProviders_Warehouses_AddLocation.spec.ts` — new
+  coverage for Service Providers > Warehouses (`pages/WarehousesPage.ts`),
+  verified independently rather than assumed to match Suppliers/Freight
+  Forwarders/Customs Brokers. Confirmed differences: the index table has no
+  combined "Location" column (Street Address/City/State/Zip Code are
+  separate columns); the Create/Edit form has its own "Status" select and no
+  Bank Accounts section at all; `min_stock_level`/`max_stock_level` are a
+  genuine hidden-required-fields bug (no "*" in the UI, both required
+  server-side, and omitting either fails with only a generic "Failed to
+  create warehouse. Please try again." instead of a specific message); and
+  it uniquely has an "Add Location" feature — a client-side modal reachable
+  from a warehouse's own detail page whose fields are all native HTML5
+  `required` rather than server-validated. Details in
+  `.agent-memory/project_conventions.md`.
+- Bank accounts: `pages/BankAccountsSection.ts` drives the "Bank accounts"
+  section shared verbatim across Suppliers/Freight Forwarders/Customs
+  Brokers' Create and Edit drawers (confirmed live to be identical Alpine.js
+  markup) — Warehouses has no equivalent. The Suppliers/Freight
+  Forwarders/Customs Brokers Create and Edit suites each exercise adding a
+  bank account as part of their happy-path flow and verify it persisted.
+- A lightweight page-health monitor (`tests/utils/errorScraper.ts`) is
+  attached in every suite above: it watches for uncaught JS exceptions and
+  same-origin 5xx responses for the suite's lifetime and fails it if any
+  occur, catching real bugs (like Warehouses' hidden-required stock-level
+  fields, confirmed via a dedicated negative-path test instead) without
+  false-flagging expected negative-path validation, which round-trips as a
+  302 redirect rather than a 5xx everywhere in this app.
+- **2026-09-17 correction**: the Suppliers index Status filter was
+  re-verified live and no longer matches its original description below —
+  the "Add Filter" dropdown, dual "Apply" buttons, and "Status: ..." chip
+  documented in the Index paragraph above have been replaced app-side by the
+  same Filter-drawer pattern the other three sections already used.
+  `SuppliersPage.filterByStatus` and the Index suite were updated to match;
+  see `.agent-memory/project_conventions.md` for the full note.
 
 ## Persistent agent memory (`.agent-memory/`)
 

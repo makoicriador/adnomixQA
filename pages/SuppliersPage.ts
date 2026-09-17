@@ -1,6 +1,7 @@
 import { Page, Locator, Download } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { BasePage } from './BasePage';
+import { BankAccountsSection, BankAccountFormData } from './BankAccountsSection';
 
 const BASE_URL = process.env.ADX_BASE_URL || 'https://adxmanager.dev';
 
@@ -75,15 +76,24 @@ export function buildFakeSupplierData(overrides: Partial<SupplierFormData> = {})
  * https://adxmanager.dev/v2/service-providers/suppliers
  *
  * The search bar, status filter, and CSV export all submit one Alpine.js
- * GET form (id="form-suppliers-index"). There are two distinct "Apply"
- * buttons with identical accessible names:
- *   - an inner one inside the Status filter popover that only stages the
- *     selection (adds a "Status: ..." chip to the toolbar), and
- *   - an outer one (button[type=submit][form=form-suppliers-index]) that
- *     actually submits the form and reloads the page with the filter query
- *     params applied.
- * Both must be clicked, in that order, for a status filter to take effect —
- * verified against the live app, not assumed.
+ * GET form (id="form-suppliers-index"). The status filter is a "Filter"
+ * button (icon-glyph-prefixed, substring match needed) that toggles a
+ * drawer (`#form-suppliers-index-drawer`) with Active/Inactive toggle
+ * buttons and a single "Update" submit button — same mechanism as Freight
+ * Forwarders/Customs Brokers/Warehouses.
+ *
+ * This supersedes an earlier finding recorded when this page object was
+ * first written: at that time the live app used a different "Add Filter"
+ * dropdown with a "Status" menu item and two identically-labelled "Apply"
+ * buttons (an inner one staging the selection into a "Status: ..." chip,
+ * an outer one actually submitting). Re-verified live on 2026-09-17: that
+ * UI no longer exists anywhere on this page — the app has since been
+ * migrated to the same unified Filter-drawer pattern as the other three
+ * Service Providers sections. Also confirmed live: "Active" is pre-checked
+ * by default even with no filter applied, so `filterByStatus` reconciles
+ * each toggle's actual checked state rather than blindly clicking every
+ * requested status (see CustomsBrokersPage.filterByStatus for the bug that
+ * blind-clicking causes).
  */
 export class SuppliersPage extends BasePage {
   constructor(page: Page) {
@@ -94,24 +104,14 @@ export class SuppliersPage extends BasePage {
     return this.page.getByPlaceholder('Search by supplier name, contact, location, or email...');
   }
 
-  private get addFilterButton(): Locator {
-    return this.page.getByRole('button', { name: 'Add Filter' });
+  private get filterButton(): Locator {
+    // Verified live: preceded by a KTUI icon-font glyph (same accessible-name
+    // quirk documented elsewhere in this app) — substring match, no `exact`.
+    return this.page.getByRole('button', { name: 'Filter' });
   }
 
-  private get statusFilterMenuItem(): Locator {
-    return this.page.getByRole('link', { name: 'Status', exact: true });
-  }
-
-  private get filterControlGroup(): Locator {
-    return this.page.locator('#filterControlGroup');
-  }
-
-  private get applyOuterButton(): Locator {
-    return this.page.locator('button[type="submit"][form="form-suppliers-index"]');
-  }
-
-  private get clearAllLink(): Locator {
-    return this.page.getByRole('link', { name: 'Clear All' });
+  private get filterDrawer(): Locator {
+    return this.page.locator('#form-suppliers-index-drawer');
   }
 
   private get downloadCsvLink(): Locator {
@@ -152,15 +152,9 @@ export class SuppliersPage extends BasePage {
     return this.page.locator('.kt-alert-destructive');
   }
 
-  /**
-   * The Status chip's label ("Status:") and its selected values render as two
-   * separate sibling <span>s inside an unlabelled chip <div> — expose the
-   * parent so a caller gets both in one web-first assertion
-   * (`expect(suppliers.statusChip).toContainText('Active')`), auto-retrying
-   * instead of a manual read-then-compare.
-   */
-  get statusChip(): Locator {
-    return this.page.getByText('Status:', { exact: true }).locator('xpath=..');
+  /** Drives the "Bank accounts" section shared verbatim with Freight Forwarders/Customs Brokers (see BankAccountsSection.ts) — present in both the Create and Edit drawers here. */
+  get bankAccounts(): BankAccountsSection {
+    return new BankAccountsSection(this.page);
   }
 
   /**
@@ -225,21 +219,30 @@ export class SuppliersPage extends BasePage {
     await Promise.all([this.page.waitForLoadState('domcontentloaded'), this.searchInput.press('Enter')]);
   }
 
-  /** Opens Add Filter > Status, toggles the given statuses, then applies via both the panel's and the form's Apply buttons. */
+  /**
+   * Opens the "Filter" drawer, reconciles each status toggle to the desired
+   * checked/unchecked state, then submits via its single "Update" button.
+   * Reconciling against each checkbox's actual current state (rather than
+   * blindly clicking every requested status) avoids the bug confirmed live
+   * on Customs Brokers, whose "Active" toggle is pre-checked by default —
+   * see CustomsBrokersPage.filterByStatus.
+   */
   async filterByStatus(statuses: SupplierStatus[]): Promise<void> {
-    await this.addFilterButton.click();
-    await this.statusFilterMenuItem.click();
-    for (const status of statuses) {
-      await this.filterControlGroup.getByText(status, { exact: true }).click();
+    await this.filterButton.click();
+    await this.filterDrawer.waitFor({ state: 'visible' });
+    const allStatuses: SupplierStatus[] = ['Active', 'Inactive'];
+    for (const status of allStatuses) {
+      const checkbox = this.filterDrawer.locator(`input[type="checkbox"][value="${status}"]`);
+      const isChecked = await checkbox.isChecked();
+      const shouldBeChecked = statuses.includes(status);
+      if (isChecked !== shouldBeChecked) {
+        await this.filterDrawer.getByText(status, { exact: true }).click();
+      }
     }
-    await this.filterControlGroup.getByRole('button', { name: 'Apply' }).click();
-    await Promise.all([this.page.waitForLoadState('domcontentloaded'), this.applyOuterButton.click()]);
-  }
-
-  async clearAllFilters(): Promise<void> {
-    if (await this.clearAllLink.count()) {
-      await Promise.all([this.page.waitForLoadState('domcontentloaded'), this.clearAllLink.click()]);
-    }
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      this.filterDrawer.getByRole('button', { name: 'Update', exact: true }).click(),
+    ]);
   }
 
   async downloadCsv(): Promise<Download> {
@@ -317,9 +320,14 @@ export class SuppliersPage extends BasePage {
    * this method itself makes no assumption about which one appears, so it
    * doubles as the driver for both the happy path and negative-path tests.
    */
-  async submitCreateDrawer(data: Partial<SupplierFormData>): Promise<void> {
+  async submitCreateDrawer(data: Partial<SupplierFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.openAddSupplierDrawer();
     await this.fillSupplierForm('create', data);
+    // Added before submitting since the Bank Accounts section lives inside
+    // this same enclosing form and persists together with everything else
+    // in one request (see BankAccountsSection.ts) rather than needing a
+    // separate save.
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     // Verified live: there are two identically-labelled "Create" submit
     // buttons wired to the same form (a responsive desktop/mobile pair) —
     // same duplicate-button pattern as the Status filter's two "Apply"
@@ -331,8 +339,8 @@ export class SuppliersPage extends BasePage {
   }
 
   /** Fills and submits the Add Supplier drawer, asserting-free convenience for the happy path. */
-  async createSupplier(data: SupplierFormData): Promise<void> {
-    await this.submitCreateDrawer(data);
+  async createSupplier(data: SupplierFormData, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
+    await this.submitCreateDrawer(data, options);
   }
 
   /**
@@ -361,8 +369,9 @@ export class SuppliersPage extends BasePage {
    * plain `.../<id>` detail page (confirmed live) and renders `successAlert`
    * there — the caller ends up on the detail page, not the index.
    */
-  async saveEdit(data: Partial<SupplierFormData>): Promise<void> {
+  async saveEdit(data: Partial<SupplierFormData>, options: { bankAccount?: BankAccountFormData } = {}): Promise<void> {
     await this.fillSupplierForm('edit', data);
+    if (options.bankAccount) await this.bankAccounts.add(options.bankAccount);
     await Promise.all([
       this.page.waitForLoadState('domcontentloaded'),
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),

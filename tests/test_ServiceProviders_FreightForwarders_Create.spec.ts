@@ -2,6 +2,8 @@ import { test, expect, Page, BrowserContext } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { FreightForwardersPage, buildFakeFreightForwarderData } from '../pages/FreightForwardersPage';
+import { buildFakeBankAccountData } from '../pages/BankAccountsSection';
+import { attachPageHealthMonitor, describeIssues, PageIssue } from './utils/errorScraper';
 
 const USERNAME = process.env.ADX_USERNAME;
 const PASSWORD = process.env.ADX_PASSWORD;
@@ -28,6 +30,7 @@ test.describe('Service Providers > Freight Forwarders Create', () => {
   let context: BrowserContext;
   let page: Page;
   let freightForwarders: FreightForwardersPage;
+  let issues: PageIssue[];
 
   test.beforeAll(async ({ browser }) => {
     test.skip(!USERNAME || !PASSWORD, 'ADX_USERNAME / ADX_PASSWORD are not set — see .env.example.');
@@ -60,6 +63,7 @@ test.describe('Service Providers > Freight Forwarders Create', () => {
       ...(isHeaded ? { recordVideo: { dir: 'test-results/videos', size: { width: 1440, height: 900 } } } : {}),
     });
     page = await context.newPage();
+    issues = attachPageHealthMonitor(page);
 
     freightForwarders = new FreightForwardersPage(page);
     await freightForwarders.goto();
@@ -69,16 +73,23 @@ test.describe('Service Providers > Freight Forwarders Create', () => {
     const video = page?.video();
     await context?.close();
     if (video) console.log('Recording saved to:', await video.path());
+    if (issues.length) console.warn(`[Page health] ${issues.length} issue(s) detected:\n${describeIssues(issues)}`);
+    expect(issues, 'No uncaught JS exceptions or 5xx server errors should occur during this suite').toEqual([]);
   });
 
   test.beforeEach(async () => {
     await freightForwarders.resetToCleanState();
   });
 
-  test('creates a new freight forwarder with all required fields filled', async () => {
+  test('creates a new freight forwarder with all required fields filled and a bank account', async () => {
     const data = buildFakeFreightForwarderData();
+    const bankAccount = buildFakeBankAccountData();
 
-    await freightForwarders.createFreightForwarder(data);
+    // The Bank Accounts section lives inside the same Create drawer form
+    // (confirmed live) — createFreightForwarder's optional `bankAccount`
+    // adds it before the drawer's own Create button submits everything
+    // together in one request.
+    await freightForwarders.createFreightForwarder(data, { bankAccount });
     // Verified live: same duplicate desktop/mobile markup pattern
     // documented for Suppliers — `.first()` rather than assuming a single
     // match, even where this particular Create button only rendered once.
@@ -97,6 +108,13 @@ test.describe('Service Providers > Freight Forwarders Create', () => {
     // "{state}, {country}". Confirmed live, not assumed to match.
     await expect(row).toContainText(`${data.city}, ${data.country}`);
     await expect(row).toContainText(data.contactName);
+
+    // Confirm the bank account actually persisted, not just that the form
+    // accepted it — the Bank Accounts section lives inside the (hidden by
+    // default) Edit drawer, so it must be reopened via the row's kebab menu
+    // to check it.
+    await freightForwarders.openEditFor(data.companyName);
+    await expect(freightForwarders.bankAccounts.rowContaining(bankAccount.bankName)).toContainText(bankAccount.bankName);
   });
 
   test('shows a validation error when Company Name is left blank', async () => {

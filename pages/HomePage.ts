@@ -47,4 +47,19 @@ export class HomePage extends BasePage {
       this.page.getByText(/Customs Brokers/i).first().click(),
     ]);
   }
+
+  /**
+   * Same sidebar accordion quirk as navigateToSuppliers, but with one twist
+   * confirmed live: a substring match on "Warehouses" hits the unrelated
+   * "Warehouses Inventory" link first (it renders earlier in the sidebar) —
+   * an exact-text match is required here specifically to land on Service
+   * Providers > Warehouses instead.
+   */
+  async navigateToWarehouses(): Promise<void> {
+    await this.page.getByText(/Service Providers/i).first().click();
+    await Promise.all([
+      this.page.waitForURL(/\/v2\/service-providers\/warehouses/, { timeout: 15_000 }),
+      this.page.getByText('Warehouses', { exact: true }).first().click(),
+    ]);
+  }
 }

@@ -2,6 +2,8 @@ import { test, expect, Page, BrowserContext } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { SuppliersPage, buildFakeSupplierData } from '../pages/SuppliersPage';
+import { buildFakeBankAccountData } from '../pages/BankAccountsSection';
+import { attachPageHealthMonitor, describeIssues, PageIssue } from './utils/errorScraper';
 
 const USERNAME = process.env.ADX_USERNAME;
 const PASSWORD = process.env.ADX_PASSWORD;
@@ -28,6 +30,7 @@ test.describe('Service Providers > Suppliers Create', () => {
   let context: BrowserContext;
   let page: Page;
   let suppliers: SuppliersPage;
+  let issues: PageIssue[];
 
   test.beforeAll(async ({ browser }) => {
     test.skip(!USERNAME || !PASSWORD, 'ADX_USERNAME / ADX_PASSWORD are not set — see .env.example.');
@@ -60,6 +63,7 @@ test.describe('Service Providers > Suppliers Create', () => {
       ...(isHeaded ? { recordVideo: { dir: 'test-results/videos', size: { width: 1440, height: 900 } } } : {}),
     });
     page = await context.newPage();
+    issues = attachPageHealthMonitor(page);
 
     suppliers = new SuppliersPage(page);
     await suppliers.goto();
@@ -69,16 +73,23 @@ test.describe('Service Providers > Suppliers Create', () => {
     const video = page?.video();
     await context?.close();
     if (video) console.log('Recording saved to:', await video.path());
+    if (issues.length) console.warn(`[Page health] ${issues.length} issue(s) detected:\n${describeIssues(issues)}`);
+    expect(issues, 'No uncaught JS exceptions or 5xx server errors should occur during this suite').toEqual([]);
   });
 
   test.beforeEach(async () => {
     await suppliers.resetToCleanState();
   });
 
-  test('creates a new supplier with all required fields filled', async () => {
+  test('creates a new supplier with all required fields filled and a bank account', async () => {
     const data = buildFakeSupplierData();
+    const bankAccount = buildFakeBankAccountData();
 
-    await suppliers.createSupplier(data);
+    // The Bank Accounts section lives inside the same Create drawer form
+    // (confirmed live) — createSupplier's optional `bankAccount` adds it
+    // before the drawer's own Create button submits everything together in
+    // one request.
+    await suppliers.createSupplier(data, { bankAccount });
     // Verified live: the success banner renders twice (same duplicate
     // desktop/mobile markup pattern as the two "Create" submit buttons) —
     // `.first()` rather than assuming a single match.
@@ -94,6 +105,12 @@ test.describe('Service Providers > Suppliers Create', () => {
     // its own fixture data, it asserts the real, unambiguous format.
     await expect(row).toContainText(`${data.state}, ${data.country}`);
     await expect(row).toContainText(data.contactName);
+
+    // Confirm the bank account actually persisted, not just that the form
+    // accepted it — reopen the supplier's own Edit drawer and check its
+    // Bank Accounts section shows the bank name we just added.
+    await suppliers.openEditFor(data.companyName);
+    await expect(suppliers.bankAccounts.rowContaining(bankAccount.bankName)).toContainText(bankAccount.bankName);
   });
 
   test('shows a validation error when Balance Timing is left blank', async () => {
