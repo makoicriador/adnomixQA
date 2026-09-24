@@ -310,4 +310,38 @@ export class CustomsBrokersPage extends BasePage {
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),
     ]);
   }
+
+  /**
+   * Deactivates the first row whose text contains `companyName`, via its
+   * kebab menu's "Deactivate" link — the only kebab action here besides
+   * navigating into the detail page (see this class's own doc comment).
+   * Confirmed live: unlike Suppliers, this stays on the plain index URL
+   * (no redirect to the detail page) with `successAlert` reading
+   * "Successfully deactivated the customs broker." there, and the record
+   * then disappears from the index's default (Active-only) search/listing —
+   * only the Filter drawer's "Inactive" toggle surfaces it again. No
+   * confirm() dialog, unlike Freight Forwarders'/Warehouses' hard "Delete".
+   */
+  async deactivateFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('a.kt-menu-link', { hasText: 'Deactivate' }).click(),
+    ]);
+  }
+
+  /**
+   * Reactivates the first row whose text contains `companyName`, via the
+   * same kebab menu whose "Deactivate" link now reads "Activate" (same
+   * label-flip mechanic as Suppliers.activateFor).
+   */
+  async activateFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('a.kt-menu-link', { hasText: 'Activate' }).click(),
+    ]);
+  }
 }

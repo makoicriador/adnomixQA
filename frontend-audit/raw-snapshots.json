@@ -471,7 +471,7 @@
         "borderRadius": "6px",
         "fontSize": "12px",
         "bgColor": "oklch(0.932 0.032 255.585)",
-        "statusLabels": "Production/Ready to Ship"
+        "statusLabels": "Production/Pending Approval/Ready to Ship"
       },
       "emptyState": {
         "present": false
@@ -563,7 +563,7 @@
         "borderRadius": "6px",
         "fontSize": "12px",
         "bgColor": "oklch(0.932 0.032 255.585)",
-        "statusLabels": "Production/Ready to Ship"
+        "statusLabels": "Production/Pending Approval/Ready to Ship"
       },
       "emptyState": {
         "present": false
@@ -635,10 +635,10 @@
         "bgColor": "oklch(0.623 0.214 259.815)",
         "color": "rgb(255, 255, 255)",
         "borderRadius": "6px",
-        "fontSize": "13px",
+        "fontSize": "12px",
         "fontWeight": "500",
         "paddingTop": "0px",
-        "paddingLeft": "12px"
+        "paddingLeft": "10px"
       },
       "searchInput": {
         "present": true,
@@ -727,10 +727,10 @@
         "bgColor": "oklch(0.546 0.245 262.881)",
         "color": "rgb(255, 255, 255)",
         "borderRadius": "6px",
-        "fontSize": "13px",
+        "fontSize": "12px",
         "fontWeight": "500",
         "paddingTop": "0px",
-        "paddingLeft": "12px"
+        "paddingLeft": "10px"
       },
       "searchInput": {
         "present": true,
@@ -1815,7 +1815,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 24
+        "rowCount": 25
       },
       "badge": {
         "present": false,
@@ -1907,7 +1907,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 24
+        "rowCount": 25
       },
       "badge": {
         "present": false,
@@ -2008,7 +2008,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 14
+        "rowCount": 22
       },
       "badge": {
         "present": false,
@@ -2100,7 +2100,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 14
+        "rowCount": 22
       },
       "badge": {
         "present": false,
@@ -2201,7 +2201,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 5
+        "rowCount": 13
       },
       "badge": {
         "present": false,
@@ -2293,7 +2293,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 5
+        "rowCount": 13
       },
       "badge": {
         "present": false,
@@ -2394,7 +2394,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 21
+        "rowCount": 25
       },
       "badge": {
         "present": true,
@@ -2486,7 +2486,7 @@
         "headerColor": "oklch(0.552 0.016 285.938)",
         "cellPaddingTop": "12px",
         "cellPaddingLeft": "20px",
-        "rowCount": 21
+        "rowCount": 25
       },
       "badge": {
         "present": true,

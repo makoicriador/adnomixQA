@@ -1,124 +1,106 @@
-Category,Element,Property,Standard (Majority),Consistent,Inconsistent Pages & Values,Expected Behavior
-Header,Header bar,Background color,#FFFFFF,Yes,,Header background must match the design-system token on every page. Every page already matches: #FFFFFF.
-Header,Header bar,Height,70px,Yes,,Header height must be identical across pages. Every page already matches: 70px.
-Header,Header bar,Box shadow / border,none,Yes,,Header elevation/border treatment must be consistent. Every page already matches: none.
-Sidebar,Sidebar container,Background color,#FFFFFF,Yes,,Sidebar background must match the design-system token on every page. Every page already matches: #FFFFFF.
-Sidebar,Sidebar container,Width,280px,Yes,,Sidebar width must be identical across pages. Every page already matches: 280px.
-Sidebar,Nav item,Font size,14px,Yes,,Sidebar nav item font size must be identical across pages. Every page already matches: 14px.
-Sidebar,Nav item,Font weight,500,Yes,,Sidebar nav item font weight must be identical across pages. Every page already matches: 500.
-Sidebar,Nav item,Text color,#09090B,Yes,,Sidebar nav item text color must be identical across pages. Every page already matches: #09090B.
-Footer,Footer,Present,This page has a footer,Yes,,A shared footer should be present (or absent) consistently on every page. Every page already matches: This page has a footer.
-Footer,Footer,Background color,transparent,Yes,,Footer background must match the design-system token on every page. Every page already matches: transparent.
-Footer,Footer,Font size,16px,Yes,,Footer text size must be consistent on every page. Every page already matches: 16px.
-Navigation,Breadcrumb,Present,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,Home (Dashboard): Shows no breadcrumb trail; Orders: Shows no breadcrumb trail,"Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
-Navigation,Breadcrumb,Font size,14px,Yes,,Breadcrumb font size must be consistent on every page. Every page already matches: 14px.
-Navigation,Breadcrumb,Text color,#18181B,Yes,,Breadcrumb text color must be consistent on every page. Every page already matches: #18181B.
-Typography,Page title (h1),Font size,24px,No,Products: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
-Typography,Page title (h1),Font weight,600,Yes,,Page title weight must follow one consistent scale. Every page already matches: 600.
-Typography,Page title (h1),Color,#09090B,Yes,,Page title color must be consistent. Every page already matches: #09090B.
-Typography,Page title (h1),Font family,"Inter, sans-serif",Yes,,"Page title font family must match the body font. Every page already matches: Inter, sans-serif."
-Typography,Section heading (card title),Font size,16px,Yes,,Section heading size must be consistent where present. Every page already matches: 16px.
-Typography,Body text,Font family,"Inter, sans-serif",Yes,,"One font family for all body text. Every page already matches: Inter, sans-serif."
-Typography,Body text,Font size,16px,Yes,,Base body font size must be consistent. Every page already matches: 16px.
-Typography,Body text,Line height,24px,Yes,,Base line height must be consistent. Every page already matches: 24px.
-Typography,Body text,Color,#09090B,Yes,,Base text color must be consistent. Every page already matches: #09090B.
-Buttons,Primary button,Present,"Has a main call-to-action button (e.g. ""+ Add"")",Yes,,"Every page with a primary action should expose it as a .kt-btn-primary button. Every page already matches: Has a main call-to-action button (e.g. ""+ Add"")."
-Buttons,Primary button,Background color,#2B7FFF,Yes,,Primary button color must be identical everywhere. Every page already matches: #2B7FFF.
-Buttons,Primary button,Text color,#FFFFFF,Yes,,Primary button text color must be identical everywhere. Every page already matches: #FFFFFF.
-Buttons,Primary button,Border radius,6px,Yes,,Primary button border radius must be identical everywhere. Every page already matches: 6px.
-Buttons,Primary button,Font size,13px,Yes,,Primary button font size must be identical everywhere. Every page already matches: 13px.
-Buttons,Primary button,Font weight,500,Yes,,Primary button font weight must be identical everywhere. Every page already matches: 500.
-Forms,Search input,Present,Has a search box,Yes,,List pages should expose a consistent search input. Every page already matches: Has a search box.
-Forms,Search input,Border color,#09090B,Yes,,Input border color must be identical everywhere. Every page already matches: #09090B.
-Forms,Search input,Border radius,0px,Yes,,Input border radius must be identical everywhere. Every page already matches: 0px.
-Forms,Search input,Font size,13px,Yes,,Input font size must be identical everywhere. Every page already matches: 13px.
-Tables,Data table,Present,Shows its data as a table,Yes,,Every list page should render its data as a table. Every page already matches: Shows its data as a table.
-Tables,Table header row,Background color (the <tr> behind the header cells),transparent,No,"Home (Dashboard): #F9FAFB;
-Inventory Warehouses: #F9FAFB",Table header row background must be identical across pages. On most pages it looks like this: transparent.
-Tables,Table header cell,"Background color (the <th> cell itself — a see-through layer, so a page's true header color is this composited with the row background above)",#F5F5F5,Yes,,Table header cell background must be identical across pages. Every page already matches: #F5F5F5.
-Tables,Table header cell,Font size,14px,No,"Home (Dashboard): 12px;
-Inventory Warehouses: 12px",Table header font size must be identical across pages. On most pages it looks like this: 14px.
-Tables,Table header cell,Font weight,400,No,"Home (Dashboard): 500;
-Inventory - All: 500;
-Inventory Warehouses: 700",Table header font weight must be identical across pages. On most pages it looks like this: 400.
-Tables,Table header cell,Text align,left,No,"Home (Dashboard): center;
-Inventory Warehouses: center",Table header text alignment must be identical across pages. On most pages it looks like this: left.
-Tables,Table data cell,Vertical padding (row density),12px,No,"Home (Dashboard): 8px;
-Inventory - All: 8px",Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
-Tables,Table data cell,Horizontal padding (left gutter),20px,No,"Home (Dashboard): 8px;
-Inventory - All: 12px",Cell left padding must be identical across pages. On most pages it looks like this: 20px.
-Badges,Status badge/pill,Present,Shows no status badges,No,"Orders: Shows status labels as colored badges;
-Shipments: Shows status labels as colored badges;
-Categories: Shows status labels as colored badges;
-Service Providers - Warehouses: Shows status labels as colored badges",Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.
-Badges,Status badge/pill,Border radius,6px,Yes,,Badge border radius must be identical across pages. Every page already matches: 6px.
-Badges,Status badge/pill,Font size,12px,Yes,,Badge font size must be identical across pages. Every page already matches: 12px.
-Spacing,Main content area,Max width,none,Yes,,Main content max-width must be identical across pages. Every page already matches: none.
-Spacing,Main content area,Left padding,40px,Yes,,Main content padding must be identical across pages. Every page already matches: 40px.
-Header,Header bar,Background color,#09090B,Yes,,Header background must match the design-system token on every page. Every page already matches: #09090B.
-Header,Header bar,Height,70px,Yes,,Header height must be identical across pages. Every page already matches: 70px.
-Header,Header bar,Box shadow / border,none,Yes,,Header elevation/border treatment must be consistent. Every page already matches: none.
-Sidebar,Sidebar container,Background color,#09090B,Yes,,Sidebar background must match the design-system token on every page. Every page already matches: #09090B.
-Sidebar,Sidebar container,Width,280px,Yes,,Sidebar width must be identical across pages. Every page already matches: 280px.
-Sidebar,Nav item,Font size,14px,Yes,,Sidebar nav item font size must be identical across pages. Every page already matches: 14px.
-Sidebar,Nav item,Font weight,500,Yes,,Sidebar nav item font weight must be identical across pages. Every page already matches: 500.
-Sidebar,Nav item,Text color,#FAFAFA,Yes,,Sidebar nav item text color must be identical across pages. Every page already matches: #FAFAFA.
-Footer,Footer,Present,This page has a footer,Yes,,A shared footer should be present (or absent) consistently on every page. Every page already matches: This page has a footer.
-Footer,Footer,Background color,transparent,Yes,,Footer background must match the design-system token on every page. Every page already matches: transparent.
-Footer,Footer,Font size,16px,Yes,,Footer text size must be consistent on every page. Every page already matches: 16px.
-Navigation,Breadcrumb,Present,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,"Home (Dashboard): Shows no breadcrumb trail;
-Orders: Shows no breadcrumb trail","Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
-Navigation,Breadcrumb,Font size,14px,Yes,,Breadcrumb font size must be consistent on every page. Every page already matches: 14px.
-Navigation,Breadcrumb,Text color,#FAFAFA,Yes,,Breadcrumb text color must be consistent on every page. Every page already matches: #FAFAFA.
-Typography,Page title (h1),Font size,24px,No,Products: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
-Typography,Page title (h1),Font weight,600,Yes,,Page title weight must follow one consistent scale. Every page already matches: 600.
-Typography,Page title (h1),Color,#FAFAFA,Yes,,Page title color must be consistent. Every page already matches: #FAFAFA.
-Typography,Page title (h1),Font family,"Inter, sans-serif",Yes,,"Page title font family must match the body font. Every page already matches: Inter, sans-serif."
-Typography,Section heading (card title),Present,Has no section heading — just the page title,No,Home (Dashboard): Has a labeled section heading above part of the page,Card/section headings should be used consistently where a page has sub-sections. On most pages it looks like this: Has no section heading — just the page title.
-Typography,Section heading (card title),Font size,16px,Yes,,Section heading size must be consistent where present. Every page already matches: 16px.
-Typography,Body text,Font family,"Inter, sans-serif",Yes,,"One font family for all body text. Every page already matches: Inter, sans-serif."
-Typography,Body text,Font size,16px,Yes,,Base body font size must be consistent. Every page already matches: 16px.
-Typography,Body text,Line height,24px,Yes,,Base line height must be consistent. Every page already matches: 24px.
-Typography,Body text,Color,#FAFAFA,Yes,,Base text color must be consistent. Every page already matches: #FAFAFA.
-Buttons,Primary button,Present,"Has a main call-to-action button (e.g. ""+ Add"")",Yes,,"Every page with a primary action should expose it as a .kt-btn-primary button. Every page already matches: Has a main call-to-action button (e.g. ""+ Add"")."
-Buttons,Primary button,Background color,#155DFC,Yes,,Primary button color must be identical everywhere. Every page already matches: #155DFC.
-Buttons,Primary button,Text color,#FFFFFF,Yes,,Primary button text color must be identical everywhere. Every page already matches: #FFFFFF.
-Buttons,Primary button,Border radius,6px,Yes,,Primary button border radius must be identical everywhere. Every page already matches: 6px.
-Buttons,Primary button,Font size,13px,Yes,,Primary button font size must be identical everywhere. Every page already matches: 13px.
-Buttons,Primary button,Font weight,500,Yes,,Primary button font weight must be identical everywhere. Every page already matches: 500.
-Forms,Search input,Present,Has a search box,Yes,,List pages should expose a consistent search input. Every page already matches: Has a search box.
-Forms,Search input,Border color,#FAFAFA,Yes,,Input border color must be identical everywhere. Every page already matches: #FAFAFA.
-Forms,Search input,Border radius,0px,Yes,,Input border radius must be identical everywhere. Every page already matches: 0px.
-Forms,Search input,Font size,13px,Yes,,Input font size must be identical everywhere. Every page already matches: 13px.
-Tables,Data table,Present,Shows its data as a table,Yes,,Every list page should render its data as a table. Every page already matches: Shows its data as a table.
-Tables,Table header row,Background color (the <tr> behind the header cells),transparent,No,"Home (Dashboard): #F9FAFB;
-Inventory Warehouses: #F9FAFB",Table header row background must be identical across pages. On most pages it looks like this: transparent.
-Tables,Table header cell,"Background color (the <th> cell itself — a see-through layer, so a page's true header color is this composited with the row background above)",#19191B,Yes,,Table header cell background must be identical across pages. Every page already matches: #19191B.
-Tables,Table header cell,Font size,14px,No,"Home (Dashboard): 12px;
-Inventory Warehouses: 12px",Table header font size must be identical across pages. On most pages it looks like this: 14px.
-Tables,Table header cell,Font weight,400,No,"Home (Dashboard): 500;
-Inventory - All: 500;
-Inventory Warehouses: 700",Table header font weight must be identical across pages. On most pages it looks like this: 400.
-Tables,Table header cell,Text align,left,No,"Home (Dashboard): center;
-Inventory Warehouses: center",Table header text alignment must be identical across pages. On most pages it looks like this: left.
-Tables,Table data cell,Vertical padding (row density),12px,No,"Home (Dashboard): 8px;
-Inventory - All: 8px",Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
-Tables,Table data cell,Horizontal padding (left gutter),20px,No,"Home (Dashboard): 8px;
-Inventory - All: 12px",Cell left padding must be identical across pages. On most pages it looks like this: 20px.
-Badges,Status badge/pill,Present,Shows no status badges,No,"Orders: Shows status labels as colored badges;
-Shipments: Shows status labels as colored badges;
-Categories: Shows status labels as colored badges;
-Service Providers - Warehouses: Shows status labels as colored badges",Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.
-Badges,Status badge/pill,Border radius,6px,Yes,,Badge border radius must be identical across pages. Every page already matches: 6px.
-Badges,Status badge/pill,Font size,12px,Yes,,Badge font size must be identical across pages. Every page already matches: 12px.
-Spacing,Main content area,Max width,none,Yes,,Main content max-width must be identical across pages. Every page already matches: none.
-Spacing,Main content area,Left padding,40px,Yes,,Main content padding must be identical across pages. Every page already matches: 40px.
-Responsive,Sidebar at 375px width (phone-sized screen),Does the sidebar tuck itself away to save space?,Sidebar tucks itself away (as it should on a phone),Yes,,On a phone-width screen the sidebar should tuck itself away automatically on every page. On most pages: Sidebar tucks itself away (as it should on a phone).
-Responsive,Menu button at 375px width (phone-sized screen),Does a menu button appear so the user can still open the sidebar?,Shows a menu (☰) button to open the sidebar,Yes,,On a phone-width screen a menu button should appear on every page so the sidebar is still reachable. On most pages: Shows a menu (☰) button to open the sidebar.
-Dark Mode Coverage,Header background,Does it actually change when you switch to dark mode?,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
-Dark Mode Coverage,Sidebar background,Does it actually change when you switch to dark mode?,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
-Dark Mode Coverage,Footer background,Does it actually change when you switch to dark mode?,Its colors stay exactly the same in dark mode (looks unfinished),Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors stay exactly the same in dark mode (looks unfinished)."
-Dark Mode Coverage,Body text color,Does it actually change when you switch to dark mode?,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
-Dark Mode Coverage,Primary button background,Does it actually change when you switch to dark mode?,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
-Empty States,Table empty-state indicator,Observed on pages with 0 rows,(none of the 13 pages had 0 rows at crawl time),Yes,,Informational only — re-run when a page is known to be empty to compare its empty-state styling.
-Badges,Status badge/pill,Status words seen on each page (for a human to sanity-check color/wording use),Orders: Production/Ready to Ship | Shipments: SHIPPING | Categories: Active | Service Providers - Warehouses: Active/Inactive,Yes,,"Informational only — check that the same word (e.g. ""Active"") always uses the same badge color everywhere it appears."
+Area of the App,Page Element,What Was Checked,Theme (Light or Dark),Standard Style (Used on Most Pages),Same on Every Page?,Pages That Look Different (and How),What It Should Look Like
+Header,Header bar,Background color,Light,#FFFFFF,Yes,,Header background must match the design-system token on every page. Every page already matches: #FFFFFF.
+Header,Header bar,Height,Light,70px,Yes,,Header height must be identical across pages. Every page already matches: 70px.
+Header,Header bar,Box shadow / border,Light,none,Yes,,Header elevation/border treatment must be consistent. Every page already matches: none.
+Sidebar,Sidebar container,Background color,Light,#FFFFFF,Yes,,Sidebar background must match the design-system token on every page. Every page already matches: #FFFFFF.
+Sidebar,Sidebar container,Width,Light,280px,Yes,,Sidebar width must be identical across pages. Every page already matches: 280px.
+Sidebar,Nav item,Font size,Light,14px,Yes,,Sidebar nav item font size must be identical across pages. Every page already matches: 14px.
+Sidebar,Nav item,Font weight,Light,500,Yes,,Sidebar nav item font weight must be identical across pages. Every page already matches: 500.
+Sidebar,Nav item,Text color,Light,#09090B,Yes,,Sidebar nav item text color must be identical across pages. Every page already matches: #09090B.
+Footer,Footer,Present,Light,This page has a footer,Yes,,A shared footer should be present (or absent) consistently on every page. Every page already matches: This page has a footer.
+Footer,Footer,Background color,Light,transparent,Yes,,Footer background must match the design-system token on every page. Every page already matches: transparent.
+Footer,Footer,Font size,Light,16px,Yes,,Footer text size must be consistent on every page. Every page already matches: 16px.
+Navigation,Breadcrumb,Present,Light,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,Home (Dashboard) looks like this instead: Shows no breadcrumb trail; Orders looks like this instead: Shows no breadcrumb trail,"Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
+Navigation,Breadcrumb,Font size,Light,14px,Yes,,Breadcrumb font size must be consistent on every page. Every page already matches: 14px.
+Navigation,Breadcrumb,Text color,Light,#18181B,Yes,,Breadcrumb text color must be consistent on every page. Every page already matches: #18181B.
+Typography,Page title (h1),Font size,Light,24px,No,Products looks like this instead: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
+Typography,Page title (h1),Font weight,Light,600,Yes,,Page title weight must follow one consistent scale. Every page already matches: 600.
+Typography,Page title (h1),Color,Light,#09090B,Yes,,Page title color must be consistent. Every page already matches: #09090B.
+Typography,Page title (h1),Font family,Light,"Inter, sans-serif",Yes,,"Page title font family must match the body font. Every page already matches: Inter, sans-serif."
+Typography,Section heading (card title),Present,Light,Has no section heading — just the page title,No,Home (Dashboard) looks like this instead: Has a labeled section heading above part of the page,Card/section headings should be used consistently where a page has sub-sections. On most pages it looks like this: Has no section heading — just the page title.
+Typography,Section heading (card title),Font size,Light,16px,Yes,,Section heading size must be consistent where present. Every page already matches: 16px.
+Typography,Body text,Font family,Light,"Inter, sans-serif",Yes,,"One font family for all body text. Every page already matches: Inter, sans-serif."
+Typography,Body text,Font size,Light,16px,Yes,,Base body font size must be consistent. Every page already matches: 16px.
+Typography,Body text,Line height,Light,24px,Yes,,Base line height must be consistent. Every page already matches: 24px.
+Typography,Body text,Color,Light,#09090B,Yes,,Base text color must be consistent. Every page already matches: #09090B.
+Buttons,Primary button,Present,Light,"Has a main call-to-action button (e.g. ""+ Add"")",Yes,,"Every page with a primary action should expose it as a .kt-btn-primary button. Every page already matches: Has a main call-to-action button (e.g. ""+ Add"")."
+Buttons,Primary button,Background color,Light,#2B7FFF,Yes,,Primary button color must be identical everywhere. Every page already matches: #2B7FFF.
+Buttons,Primary button,Text color,Light,#FFFFFF,Yes,,Primary button text color must be identical everywhere. Every page already matches: #FFFFFF.
+Buttons,Primary button,Border radius,Light,6px,Yes,,Primary button border radius must be identical everywhere. Every page already matches: 6px.
+Buttons,Primary button,Font size,Light,13px,No,Shipments looks like this instead: 12px,Primary button font size must be identical everywhere. On most pages it looks like this: 13px.
+Buttons,Primary button,Font weight,Light,500,Yes,,Primary button font weight must be identical everywhere. Every page already matches: 500.
+Forms,Search input,Present,Light,Has a search box,Yes,,List pages should expose a consistent search input. Every page already matches: Has a search box.
+Forms,Search input,Border color,Light,#09090B,Yes,,Input border color must be identical everywhere. Every page already matches: #09090B.
+Forms,Search input,Border radius,Light,0px,Yes,,Input border radius must be identical everywhere. Every page already matches: 0px.
+Forms,Search input,Font size,Light,13px,Yes,,Input font size must be identical everywhere. Every page already matches: 13px.
+Tables,Data table,Present,Light,Shows its data as a table,Yes,,Every list page should render its data as a table. Every page already matches: Shows its data as a table.
+Tables,Table header row,Background color (the <tr> behind the header cells),Light,transparent,No,Home (Dashboard) looks like this instead: #F9FAFB; Inventory Warehouses looks like this instead: #F9FAFB,Table header row background must be identical across pages. On most pages it looks like this: transparent.
+Tables,Table header cell,"Background color (the <th> cell itself — a see-through layer, so a page's true header color is this composited with the row background above)",Light,#F5F5F5,Yes,,Table header cell background must be identical across pages. Every page already matches: #F5F5F5.
+Tables,Table header cell,Border (full grid vs. divider-only),Light,0px 1px 0px 0px,No,Home (Dashboard) looks like this instead: 1px; Inventory Warehouses looks like this instead: 1px,"All tables should use the same border style — either a full grid or column dividers only, not a mix. On most pages it looks like this: 0px 1px 0px 0px."
+Tables,Table header cell,Font size,Light,14px,No,Home (Dashboard) looks like this instead: 12px; Inventory Warehouses looks like this instead: 12px,Table header font size must be identical across pages. On most pages it looks like this: 14px.
+Tables,Table header cell,Font weight,Light,400,No,Home (Dashboard) looks like this instead: 500; Inventory - All looks like this instead: 500; Inventory Warehouses looks like this instead: 700,Table header font weight must be identical across pages. On most pages it looks like this: 400.
+Tables,Table header cell,Text align,Light,left,No,Home (Dashboard) looks like this instead: center; Inventory Warehouses looks like this instead: center,Table header text alignment must be identical across pages. On most pages it looks like this: left.
+Tables,Table data cell,Vertical padding (row density),Light,12px,No,Home (Dashboard) looks like this instead: 8px; Inventory - All looks like this instead: 8px,Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
+Tables,Table data cell,Horizontal padding (left gutter),Light,20px,No,Home (Dashboard) looks like this instead: 8px; Inventory - All looks like this instead: 12px,Cell left padding must be identical across pages. On most pages it looks like this: 20px.
+Badges,Status badge/pill,Present,Light,Shows no status badges,No,Orders looks like this instead: Shows status labels as colored badges; Shipments looks like this instead: Shows status labels as colored badges; Categories looks like this instead: Shows status labels as colored badges; Service Providers - Warehouses looks like this instead: Shows status labels as colored badges,Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.
+Badges,Status badge/pill,Border radius,Light,6px,Yes,,Badge border radius must be identical across pages. Every page already matches: 6px.
+Badges,Status badge/pill,Font size,Light,12px,Yes,,Badge font size must be identical across pages. Every page already matches: 12px.
+Spacing,Main content area,Max width,Light,none,Yes,,Main content max-width must be identical across pages. Every page already matches: none.
+Spacing,Main content area,Left padding,Light,40px,Yes,,Main content padding must be identical across pages. Every page already matches: 40px.
+Header,Header bar,Background color,Dark,#09090B,Yes,,Header background must match the design-system token on every page. Every page already matches: #09090B.
+Header,Header bar,Height,Dark,70px,Yes,,Header height must be identical across pages. Every page already matches: 70px.
+Header,Header bar,Box shadow / border,Dark,none,Yes,,Header elevation/border treatment must be consistent. Every page already matches: none.
+Sidebar,Sidebar container,Background color,Dark,#09090B,Yes,,Sidebar background must match the design-system token on every page. Every page already matches: #09090B.
+Sidebar,Sidebar container,Width,Dark,280px,Yes,,Sidebar width must be identical across pages. Every page already matches: 280px.
+Sidebar,Nav item,Font size,Dark,14px,Yes,,Sidebar nav item font size must be identical across pages. Every page already matches: 14px.
+Sidebar,Nav item,Font weight,Dark,500,Yes,,Sidebar nav item font weight must be identical across pages. Every page already matches: 500.
+Sidebar,Nav item,Text color,Dark,#FAFAFA,Yes,,Sidebar nav item text color must be identical across pages. Every page already matches: #FAFAFA.
+Footer,Footer,Present,Dark,This page has a footer,Yes,,A shared footer should be present (or absent) consistently on every page. Every page already matches: This page has a footer.
+Footer,Footer,Background color,Dark,transparent,Yes,,Footer background must match the design-system token on every page. Every page already matches: transparent.
+Footer,Footer,Font size,Dark,16px,Yes,,Footer text size must be consistent on every page. Every page already matches: 16px.
+Navigation,Breadcrumb,Present,Dark,"Shows a breadcrumb trail (e.g. ""Section > Page"") near the top",No,Home (Dashboard) looks like this instead: Shows no breadcrumb trail; Orders looks like this instead: Shows no breadcrumb trail,"Every list/detail page should show a breadcrumb. On most pages it looks like this: Shows a breadcrumb trail (e.g. ""Section > Page"") near the top."
+Navigation,Breadcrumb,Font size,Dark,14px,Yes,,Breadcrumb font size must be consistent on every page. Every page already matches: 14px.
+Navigation,Breadcrumb,Text color,Dark,#FAFAFA,Yes,,Breadcrumb text color must be consistent on every page. Every page already matches: #FAFAFA.
+Typography,Page title (h1),Font size,Dark,24px,No,Products looks like this instead: 20px,Page title size must follow one consistent scale. On most pages it looks like this: 24px.
+Typography,Page title (h1),Font weight,Dark,600,Yes,,Page title weight must follow one consistent scale. Every page already matches: 600.
+Typography,Page title (h1),Color,Dark,#FAFAFA,Yes,,Page title color must be consistent. Every page already matches: #FAFAFA.
+Typography,Page title (h1),Font family,Dark,"Inter, sans-serif",Yes,,"Page title font family must match the body font. Every page already matches: Inter, sans-serif."
+Typography,Section heading (card title),Present,Dark,Has no section heading — just the page title,No,Home (Dashboard) looks like this instead: Has a labeled section heading above part of the page,Card/section headings should be used consistently where a page has sub-sections. On most pages it looks like this: Has no section heading — just the page title.
+Typography,Section heading (card title),Font size,Dark,16px,Yes,,Section heading size must be consistent where present. Every page already matches: 16px.
+Typography,Body text,Font family,Dark,"Inter, sans-serif",Yes,,"One font family for all body text. Every page already matches: Inter, sans-serif."
+Typography,Body text,Font size,Dark,16px,Yes,,Base body font size must be consistent. Every page already matches: 16px.
+Typography,Body text,Line height,Dark,24px,Yes,,Base line height must be consistent. Every page already matches: 24px.
+Typography,Body text,Color,Dark,#FAFAFA,Yes,,Base text color must be consistent. Every page already matches: #FAFAFA.
+Buttons,Primary button,Present,Dark,"Has a main call-to-action button (e.g. ""+ Add"")",Yes,,"Every page with a primary action should expose it as a .kt-btn-primary button. Every page already matches: Has a main call-to-action button (e.g. ""+ Add"")."
+Buttons,Primary button,Background color,Dark,#155DFC,Yes,,Primary button color must be identical everywhere. Every page already matches: #155DFC.
+Buttons,Primary button,Text color,Dark,#FFFFFF,Yes,,Primary button text color must be identical everywhere. Every page already matches: #FFFFFF.
+Buttons,Primary button,Border radius,Dark,6px,Yes,,Primary button border radius must be identical everywhere. Every page already matches: 6px.
+Buttons,Primary button,Font size,Dark,13px,No,Shipments looks like this instead: 12px,Primary button font size must be identical everywhere. On most pages it looks like this: 13px.
+Buttons,Primary button,Font weight,Dark,500,Yes,,Primary button font weight must be identical everywhere. Every page already matches: 500.
+Forms,Search input,Present,Dark,Has a search box,Yes,,List pages should expose a consistent search input. Every page already matches: Has a search box.
+Forms,Search input,Border color,Dark,#FAFAFA,Yes,,Input border color must be identical everywhere. Every page already matches: #FAFAFA.
+Forms,Search input,Border radius,Dark,0px,Yes,,Input border radius must be identical everywhere. Every page already matches: 0px.
+Forms,Search input,Font size,Dark,13px,Yes,,Input font size must be identical everywhere. Every page already matches: 13px.
+Tables,Data table,Present,Dark,Shows its data as a table,Yes,,Every list page should render its data as a table. Every page already matches: Shows its data as a table.
+Tables,Table header row,Background color (the <tr> behind the header cells),Dark,transparent,No,Home (Dashboard) looks like this instead: #F9FAFB; Inventory Warehouses looks like this instead: #F9FAFB,Table header row background must be identical across pages. On most pages it looks like this: transparent.
+Tables,Table header cell,"Background color (the <th> cell itself — a see-through layer, so a page's true header color is this composited with the row background above)",Dark,#19191B,Yes,,Table header cell background must be identical across pages. Every page already matches: #19191B.
+Tables,Table header cell,Border (full grid vs. divider-only),Dark,0px 1px 0px 0px,No,Home (Dashboard) looks like this instead: 1px; Inventory Warehouses looks like this instead: 1px,"All tables should use the same border style — either a full grid or column dividers only, not a mix. On most pages it looks like this: 0px 1px 0px 0px."
+Tables,Table header cell,Font size,Dark,14px,No,Home (Dashboard) looks like this instead: 12px; Inventory Warehouses looks like this instead: 12px,Table header font size must be identical across pages. On most pages it looks like this: 14px.
+Tables,Table header cell,Font weight,Dark,400,No,Home (Dashboard) looks like this instead: 500; Inventory - All looks like this instead: 500; Inventory Warehouses looks like this instead: 700,Table header font weight must be identical across pages. On most pages it looks like this: 400.
+Tables,Table header cell,Text align,Dark,left,No,Home (Dashboard) looks like this instead: center; Inventory Warehouses looks like this instead: center,Table header text alignment must be identical across pages. On most pages it looks like this: left.
+Tables,Table data cell,Vertical padding (row density),Dark,12px,No,Home (Dashboard) looks like this instead: 8px; Inventory - All looks like this instead: 8px,Row spacing/density must be identical across pages. On most pages it looks like this: 12px.
+Tables,Table data cell,Horizontal padding (left gutter),Dark,20px,No,Home (Dashboard) looks like this instead: 8px; Inventory - All looks like this instead: 12px,Cell left padding must be identical across pages. On most pages it looks like this: 20px.
+Badges,Status badge/pill,Present,Dark,Shows no status badges,No,Orders looks like this instead: Shows status labels as colored badges; Shipments looks like this instead: Shows status labels as colored badges; Categories looks like this instead: Shows status labels as colored badges; Service Providers - Warehouses looks like this instead: Shows status labels as colored badges,Status values should render via one shared badge/pill component. On most pages it looks like this: Shows no status badges.
+Badges,Status badge/pill,Border radius,Dark,6px,Yes,,Badge border radius must be identical across pages. Every page already matches: 6px.
+Badges,Status badge/pill,Font size,Dark,12px,Yes,,Badge font size must be identical across pages. Every page already matches: 12px.
+Spacing,Main content area,Max width,Dark,none,Yes,,Main content max-width must be identical across pages. Every page already matches: none.
+Spacing,Main content area,Left padding,Dark,40px,Yes,,Main content padding must be identical across pages. Every page already matches: 40px.
+Responsive,Sidebar at 375px width (phone-sized screen),Does the sidebar tuck itself away to save space?,N/A,Sidebar tucks itself away (as it should on a phone),Yes,,On a phone-width screen the sidebar should tuck itself away automatically on every page. On most pages: Sidebar tucks itself away (as it should on a phone).
+Responsive,Menu button at 375px width (phone-sized screen),Does a menu button appear so the user can still open the sidebar?,N/A,Shows a menu (☰) button to open the sidebar,Yes,,On a phone-width screen a menu button should appear on every page so the sidebar is still reachable. On most pages: Shows a menu (☰) button to open the sidebar.
+Dark Mode Coverage,Header background,Does it actually change when you switch to dark mode?,Light→Dark,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
+Dark Mode Coverage,Sidebar background,Does it actually change when you switch to dark mode?,Light→Dark,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
+Dark Mode Coverage,Footer background,Does it actually change when you switch to dark mode?,Light→Dark,Its colors stay exactly the same in dark mode (looks unfinished),Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors stay exactly the same in dark mode (looks unfinished)."
+Dark Mode Coverage,Body text color,Does it actually change when you switch to dark mode?,Light→Dark,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
+Dark Mode Coverage,Primary button background,Does it actually change when you switch to dark mode?,Light→Dark,Its colors do change when switching to dark mode,Yes,,"This part of the page should re-color itself when dark mode is turned on, same as it does everywhere else. On most pages: Its colors do change when switching to dark mode."
+Empty States,Table empty-state indicator,Observed on pages with 0 rows,N/A,(none of the 13 pages had 0 rows at crawl time),Yes,,Informational only — re-run when a page is known to be empty to compare its empty-state styling.
+Badges,Status badge/pill,Status words seen on each page (for a human to sanity-check color/wording use),Light,Orders: Production/Pending Approval/Ready to Ship | Shipments: SHIPPING | Categories: Active | Service Providers - Warehouses: Active/Inactive,Yes,,"Informational only — check that the same word (e.g. ""Active"") always uses the same badge color everywhere it appears."

@@ -303,4 +303,50 @@ export class FreightForwardersPage extends BasePage {
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),
     ]);
   }
+
+  /**
+   * Deletes the first row whose text contains `companyName`, via its kebab
+   * menu's "Delete" button — unlike Suppliers/Customs Brokers (which only
+   * offer a "Deactivate" status toggle), this is the only Freight
+   * Forwarders kebab action besides "Edit" and fires a native `confirm()`
+   * dialog ("Are you sure you want to delete this freight forwarder?"),
+   * confirmed live and auto-accepted here. On success this redirects to the
+   * plain index with `successAlert` reading "Freight forwarder deleted
+   * successfully." there, and the record disappears from the default
+   * index search (confirmed via the "No freight forwarders found" empty
+   * state, not a row count — a plain `rowsContaining` count after deletion
+   * is unsafe here since that empty-state message itself renders inside a
+   * `<tr>` echoing the searched term back, which would otherwise
+   * false-positive as "found").
+   *
+   * Also confirmed live: unlike Products' soft delete (which redirects to a
+   * detail page still rendering a "Deleted" badge), revisiting this
+   * record's own detail URL afterward still returns HTTP 200 with the
+   * *exact* pre-delete data intact — status still "Active", Edit/Delete
+   * buttons still present, no "Deleted" indicator anywhere. It is a
+   * genuinely different, undocumented-in-the-UI quirk worth its own
+   * regression check rather than assuming it matches Products.
+   */
+  async deleteFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    this.page.once('dialog', (dialog) => dialog.accept());
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('button', { hasText: 'Delete' }).click(),
+    ]);
+  }
+
+  /**
+   * Opens the same kebab "Delete" button but dismisses the native
+   * `confirm()` dialog instead of accepting it — confirmed live that this
+   * leaves the record completely untouched (no navigation, no deletion),
+   * same as Products' own cancel-delete behavior.
+   */
+  async cancelDeleteFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    this.page.once('dialog', (dialog) => dialog.dismiss());
+    await row.locator('button', { hasText: 'Delete' }).click();
+  }
 }

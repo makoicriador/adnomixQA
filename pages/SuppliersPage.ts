@@ -377,4 +377,39 @@ export class SuppliersPage extends BasePage {
       this.editDrawer.getByRole('button', { name: 'Save Changes', exact: true }).first().click(),
     ]);
   }
+
+  /**
+   * Deactivates the first row whose text contains `companyName`, via its
+   * kebab menu's "Deactivate" link (a plain `<a href=".../toggle-status">`,
+   * not a client-side action — no confirm() dialog, unlike Freight
+   * Forwarders'/Warehouses' hard "Delete"). Confirmed live: on success this
+   * redirects from the index straight to the record's own detail page
+   * (`.../suppliers/{id}`, no `/edit` suffix) with `successAlert` reading
+   * "Successfully deactivated the supplier." there, and the record then
+   * disappears from the index's default (Active-only) search/listing —
+   * only the Filter drawer's "Inactive" toggle surfaces it again.
+   */
+  async deactivateFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('a.kt-menu-link', { hasText: 'Deactivate' }).click(),
+    ]);
+  }
+
+  /**
+   * Reactivates the first row whose text contains `companyName`, via the
+   * same kebab menu whose "Deactivate" link now reads "Activate" (confirmed
+   * live: the link's label flips with the record's current status, same
+   * `.../toggle-status` href either way).
+   */
+  async activateFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('a.kt-menu-link', { hasText: 'Activate' }).click(),
+    ]);
+  }
 }

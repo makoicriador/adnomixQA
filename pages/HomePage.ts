@@ -62,4 +62,21 @@ export class HomePage extends BasePage {
       this.page.getByText('Warehouses', { exact: true }).first().click(),
     ]);
   }
+
+  /**
+   * Same sidebar accordion quirk as navigateToSuppliers — confirmed live:
+   * an anchored exact-text match (`/^Products$/i`) resolves to a
+   * zero-size/hidden span and the click silently no-ops (the accordion
+   * never expands), while the same non-anchored substring match used
+   * elsewhere in this file works fine. "All Products" itself is an exact
+   * match so it doesn't collide with the "Products" breadcrumb/heading text
+   * that also renders on the destination page.
+   */
+  async navigateToAllProducts(): Promise<void> {
+    await this.page.getByText(/Products/i).first().click();
+    await Promise.all([
+      this.page.waitForURL(/\/v2\/products$/, { timeout: 15_000 }),
+      this.page.getByText('All Products', { exact: true }).first().click(),
+    ]);
+  }
 }

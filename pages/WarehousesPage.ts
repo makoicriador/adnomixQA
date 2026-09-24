@@ -407,4 +407,49 @@ export class WarehousesPage extends BasePage {
   locationRow(locationCompanyName: string): Locator {
     return this.page.locator('div').filter({ hasText: locationCompanyName }).last();
   }
+
+  /**
+   * Deletes the first row whose text contains `companyName`, via its kebab
+   * menu's "Delete" button. Confirmed live: this is the one Service
+   * Providers section whose kebab offers BOTH "Deactivate"/"Activate" AND a
+   * separate hard "Delete" together — this method drives only the latter.
+   * Fires a native `confirm()` dialog ("Are you sure you want to delete
+   * this warehouse? This action cannot be undone." — a longer message than
+   * Freight Forwarders' own Delete confirm), auto-accepted here. On success
+   * this redirects to the plain index with `successAlert` reading
+   * `Warehouse "{companyName}" deleted successfully.` there (the only
+   * Service Providers delete/deactivate banner that echoes the record's
+   * name back), and the record disappears from the default index search
+   * (confirmed via the "No warehouses found" empty state, not a row count —
+   * see FreightForwardersPage.deleteFor for why a plain `rowsContaining`
+   * count is unsafe here).
+   *
+   * Also confirmed live, same undocumented-in-the-UI quirk as Freight
+   * Forwarders: revisiting the deleted record's own detail URL afterward
+   * still returns HTTP 200 with the exact pre-delete data intact (status
+   * still "Active", Add Location/Edit/Delete all still present) — no
+   * "Deleted" badge, unlike Products' soft delete.
+   */
+  async deleteFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    this.page.once('dialog', (dialog) => dialog.accept());
+    await Promise.all([
+      this.page.waitForLoadState('domcontentloaded'),
+      row.locator('button', { hasText: 'Delete' }).click(),
+    ]);
+  }
+
+  /**
+   * Opens the same kebab "Delete" button but dismisses the native
+   * `confirm()` dialog instead of accepting it — leaves the record
+   * completely untouched (no navigation, no deletion), same as Freight
+   * Forwarders' own cancel-delete behavior.
+   */
+  async cancelDeleteFor(companyName: string): Promise<void> {
+    const row = this.rowsContaining(companyName).first();
+    await row.locator('button.kt-menu-toggle').click();
+    this.page.once('dialog', (dialog) => dialog.dismiss());
+    await row.locator('button', { hasText: 'Delete' }).click();
+  }
 }
