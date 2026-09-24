@@ -8,3 +8,4 @@ playwright/.cache/
 *.log
 .agent-memory/.mcp-demo-scratch.txt
 recordings/
+frontend-audit/link-crawls/
